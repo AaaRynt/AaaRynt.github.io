@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>animation-timing-function</title>
+	</head>
+	<style>
+		div,
+		button {
+			box-shadow: 7px 7px 10px rgb(0, 0, 0, 0.5);
+		}
+		body {
+			background-color: rgb(40, 44, 52);
+			color: white;
+			margin: 0px;
+			display: flex;
+			justify-content: center;
+			height: 100vh;
+			flex-direction: column;
+		}
+		div {
+			position: relative;
+			height: 100px;
+			width: 100px;
+			margin: 4px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: darkblue;
+			color: darkred;
+			font-size: 15px;
+			font-weight: 900;
+		}
+		button {
+			margin: 10px;
+			height: 30px;
+			width: 100px;
+			font-size: 15px;
+			font-weight: 900;
+			background-color: darkblue;
+			color: darkred;
+			cursor: pointer;
+			transition: all 0.3s;
+		}
+		button:hover {
+			background-color: darkred;
+			color: darkblue;
+			width: 120px;
+		}
+		hr {
+			height: 2px;
+			border: none;
+			background: linear-gradient(to right, darkblue, darkred);
+			margin: 2px;
+		}
+		@keyframes move {
+			from {
+				left: 0px;
+				background-color: darkblue;
+				color: darkred;
+			}
+			to {
+				left: var(--target-x);
+				background-color: darkred;
+				color: darkblue;
+			}
+		}
+		body > div:nth-of-type(1) {
+			animation-timing-function: linear;
+		}
+		body > div:nth-of-type(2) {
+			animation-timing-function: ease-out;
+		}
+		body > div:nth-of-type(3) {
+			animation-timing-function: ease-in;
+		}
+		body > div:nth-of-type(4) {
+			animation-timing-function: ease-in-out;
+		}
+		body > div:nth-of-type(5) {
+			animation-timing-function: ease;
+		}
+		.moving {
+			animation: move forwards;
+			animation-delay: 0.4s;
+		}
+		.control {
+			all: unset;
+			appearance: none;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 10px;
+			margin: 20px;
+		}
+		input {
+			all: unset;
+			width: 120px;
+			outline: 1px white solid;
+			background-color: rgb(40, 44, 52);
+			color: white;
+			margin-right: 5px;
+		}
+		span::after {
+			content: "sec";
+			position: absolute;
+			transform: translate(-45px);
+		}
+	</style>
+	<body>
+		<div>linear</div>
+		<div>ease-out</div>
+		<div>ease-in</div>
+		<div>ease-in-out</div>
+		<div>ease</div>
+		<hr />
+		<div class="control">
+			<button onclick="fn()">M O V E</button>
+			<span
+				><input
+					type="number"
+					name=""
+					id=""
+					min="0"
+					placeholder="duration"
+			/></span>
+			<a href="https://cubic-bezier.com/" target="_blank"
+				>https://cubic-bezier.com/</a
+			>
+		</div>
+		<script>
+			function fn() {
+				document.querySelectorAll("div").forEach(div => {
+					div.style.animationDuration =
+						document.querySelector("input").value + "s";
+					const targetX = window.innerWidth - div.offsetWidth - 4;
+					div.style.setProperty("--target-x", `${targetX}px`);
+					div.classList.remove("moving");
+					void div.offsetWidth;
+					div.classList.add("moving");
+				});
+			}
+		</script>
+	</body>
+</html>
