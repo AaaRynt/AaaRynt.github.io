@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>FUN BROWSER GAME TANKI</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			@keyframes identifier {
+				100% {
+					filter: hue-rotate(360deg);
+				}
+			}
+			#a {
+				height: 100vh;
+				position: relative;
+			}
+			#a::after {
+				content: "";
+				color: white;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-image: url(https://3dtank.com/wp-content/uploads/2024/12/NY24_1920x1080_web.jpg);
+				background-size: cover;
+				background-position: center;
+				animation: identifier 10s linear infinite;
+				z-index: -1;
+			}
+			#head {
+				height: 50px;
+				font-weight: bold;
+				font-size: large;
+				color: white;
+				text-align: center;
+			}
+			#head .box {
+				float: left;
+				margin: 10px;
+				height: 50px;
+				padding: 10px;
+				border: 2px solid white;
+				border-radius: 15px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+			}
+			.center-text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+				color: white;
+				font-size: xx-large;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="a">
+			<div id="head">
+				<a href="https://3dtank.com/" class="box" style="float: left">
+					<img
+						src="https://3dtank.com/wp-content/themes/mainsite/resources/assets/images/logo.png"
+						alt="3dtank"
+					/>
+				</a>
+				<a
+					href="https://3dtank.com/category/news/"
+					class="box"
+					style="float: left"
+					>NEWS</a
+				>
+				<a
+					href="https://3dtank.com/category/help/"
+					class="box"
+					style="float: right; width: 50px; cursor: help"
+					>?</a
+				>
+			</div>
+			<div class="center-text">
+				<hr />
+				<h1>多人TPS射击游戏</h1>
+				<h2>超炫3D极致体验</h2>
+				<hr />
+				<span style="color: black; font-size: medium">选择账号:</span>
+				<select name="Player">
+					<option value="1">CityHunter</option>
+					<option value="2">ZYNQ</option>
+					<option value="3">SOAP</option>
+					<option value="4">80000</option>
+					<option value="5">k..you</option>
+					<option value="6">J-95</option>
+					<option value="7">袁国良</option>
+					<option value="8">王斌</option>
+				</select>
+				<input
+					type="button"
+					value="Play Now!"
+					onclick="alert('Hello,Tanker!')"
+					style="
+						height: 50px;
+						padding: 15px;
+						background-color: yellow;
+						border-radius: 10px;
+						cursor: pointer;
+						box-shadow: 5px 5px 5px 5px black,
+							-5px -5px 5px 5px white;
+					"
+				/>
+			</div>
+		</div>
+	</body>
+</html>
