@@ -255,7 +255,7 @@
 
 			document.querySelector("button").addEventListener("click", fn_start);
 			function fn_start() {
-				if (input.value) {
+				if (!input.value) {
 					alert("Input the numbers of beans!");
 				}
 				plays++;
