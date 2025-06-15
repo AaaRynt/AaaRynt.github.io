@@ -232,7 +232,9 @@
 				if (i >= 380) div.style.borderBottom = "none";
 				container.appendChild(div);
 			}
-			setInterval(() => {
+			updateTime();
+			setInterval(updateTime, 1000);
+			function updateTime() {
 				const now = new Date();
 				const seconds = now.getSeconds();
 				const minutes = now.getMinutes();
@@ -240,7 +242,7 @@
 				document.querySelector("#time").innerHTML = `${hours.toString().padStart(2, "0")}:${minutes
 					.toString()
 					.padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-			}, 1000);
+			}
 			function light() {
 				document.querySelector(".change").classList.toggle("changelight");
 				document.querySelector(".move").classList.toggle("movelight");
