@@ -30,6 +30,7 @@
 				flex-direction: column;
 				overflow: hidden;
 			}
+
 			#container {
 				width: 600px;
 				height: 600px;
@@ -40,6 +41,7 @@
 				border: 8px ridge white;
 				position: relative;
 			}
+
 			.start {
 				all: unset;
 				text-align: center;
@@ -53,16 +55,19 @@
 				cursor: pointer;
 				transition: all 0.2s;
 			}
+
 			.start:hover {
 				color: white;
 				transform: scale(1.1);
 				background-color: deepskyblue;
 			}
+
 			.start:active {
 				color: red;
 				transform: scale(0.9);
 				background-color: blue;
 			}
+
 			.cell {
 				box-sizing: border-box;
 				border-right: 1px solid gray;
@@ -73,9 +78,11 @@
 				align-items: center;
 				justify-content: center;
 			}
+
 			.move {
 				transition: all 0.2s;
 			}
+
 			.coin {
 				position: absolute;
 				height: 10px;
@@ -83,6 +90,7 @@
 				border-radius: 50%;
 				background-color: wheat;
 			}
+
 			.eat {
 				position: absolute;
 				height: 10px;
@@ -93,6 +101,7 @@
 				transition: 0.2s;
 				box-shadow: inset 0 -5px 0 -3px pink;
 			}
+
 			.eat::before,
 			.eat::after {
 				content: "";
@@ -103,12 +112,15 @@
 				background-color: lightblue;
 				border-radius: 50%;
 			}
+
 			.eat::before {
 				left: 2px;
 			}
+
 			.eat::after {
 				right: 2px;
 			}
+
 			.change {
 				all: unset;
 				height: 40px;
@@ -121,6 +133,7 @@
 				transition: 0.4s;
 				cursor: pointer;
 			}
+
 			.move {
 				all: unset;
 				height: 30px;
@@ -132,21 +145,26 @@
 				left: 5px;
 				transition: 0.4s;
 			}
+
 			.light {
 				background: whitesmoke;
 				color: black;
 			}
+
 			.changelight {
 				background-color: rgb(50, 250, 100);
 			}
+
 			.movelight {
 				top: 5px;
 				left: 45px;
 			}
+
 			kbd {
 				background-color: rgba(50, 50, 50, 0.5);
 				border-radius: 2px;
 			}
+
 			#time {
 				font-family: "Sixtyfour Convergence", sans-serif;
 				font-optical-sizing: auto;
@@ -161,6 +179,7 @@
 			}
 		</style>
 	</head>
+
 	<body>
 		<div id="container"></div>
 		<div style="position: absolute; top: 2%; left: 2%">
@@ -185,6 +204,7 @@
 		</audio>
 		<script>
 			const container = document.querySelector("#container");
+			4;
 			const step = document.querySelector("#step");
 			const play = document.querySelector("#play");
 			const audio = document.querySelector("#eat");
@@ -235,6 +255,9 @@
 
 			document.querySelector("button").addEventListener("click", fn_start);
 			function fn_start() {
+				if (input.value) {
+					alert("Input the numbers of beans!");
+				}
 				plays++;
 				steps = 0;
 				step.textContent = `Current steps: ${steps}`;
@@ -297,6 +320,7 @@
 						).innerHTML = `Num of eaten:  <span style="color: wheat;">${++eatens}</span>`;
 					}
 				});
+
 				step.textContent = `Current steps: ${steps}`;
 			});
 		</script>
