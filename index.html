@@ -7,78 +7,117 @@
 	</head>
 	<style>
 		body {
+			z-index: 1;
 			transition: 0.4s;
-			height: 100vh;
 			margin: 0px;
-			background: rgb(40, 44, 52);
+			padding: 0px;
+			background-color: rgb(40, 44, 52);
 			color: rgb(171, 178, 191);
-			font-size: 20px;
 			font-weight: 400;
 			font-style: normal;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
+			text-align: center;
+		}
+		.bkc {
+			z-index: -1;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background: linear-gradient(to left bottom, rgb(40, 20, 10), rgb(10, 40, 20), rgb(20, 10, 40));
+			background-size: 100%;
+			animation: change 4s linear infinite;
+		}
+		@keyframes change {
+			100% {
+				filter: hue-rotate(360deg);
+			}
 		}
 		#time {
-			opacity: 0.7;
-			font-size: 20px;
 			position: absolute;
 			top: 2%;
 			right: 2%;
-		}
-		#introduce {
-			position: absolute;
-			top: 10%;
+			font-size: 20px;
 		}
 
+		#nav {
+			position: absolute;
+			width: 90%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 		.link {
 			cursor: help;
 			height: 60px;
-			width: 90%;
-			margin: 8px;
+			width: 100%;
+			margin-top: 8px;
 			position: relative;
-			background-color: rgb(150, 150, 150);
+			opacity: 0.7;
+			background-color: rgb(171, 178, 191);
 			border-radius: 10px;
 			display: flex;
 			align-items: center;
-			transition: 0.3s;
+			transition: 0.2s;
 		}
 		.link:hover {
-			background-color: rgb(100, 150, 150);
-			transform: scale(1.05) translate(0, -4px);
+			background-color: rgb(100, 200, 250);
+			box-shadow: 0 4px 10px rgba(100, 200, 250, 0.5);
+			transform: scale(1.025) translate(0, -4px);
+		}
+		.link:active {
+			background-color: rgb(150, 100, 200);
+			box-shadow: none;
+			transform: scale(0.975) translate(0, 2px);
+		}
+		footer {
+			position: absolute;
+			bottom: 2px;
+			left: 50%;
+			transform: translate(-50%, 0);
+		}
+		a,
+		i {
+			font-size: 20px;
+			position: absolute;
 		}
 		a {
-			position: absolute;
 			left: 5%;
 		}
 		i {
 			color: black;
-			position: absolute;
 			left: 90%;
 		}
 	</style>
 	<body>
 		<div id="time">00:00:00</div>
-		<h1 style="position: absolute; top: 0px">Welcome</h1>
+		<h1>Welcome!</h1>
 		<div id="introduce"></div>
-		<div class="link">
-			<a href="https://aaarynt.github.io/Pac%20man" target="_blank">Pac man </a><i>2025-06-15</i>
+		<div id="nav">
+			<div class="link">
+				<a href="https://aaarynt.github.io/Pac%20man" target="_blank">Pac man </a><i>2025-06-15</i>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/War%20movies" target="_blank">War movies</a><i>2025-06-06</i>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Speeds%20difference" target="_blank">Speeds difference</a
+				><i>2025-05-18</i>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Solar%20System" target="_blank">Solar System</a><i>2025-05-08</i>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/%E5%8F%98%E8%89%B2%E9%BE%99" target="_blank">变色龙</a
+				><i>2025-04-14</i>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/3DTANK" target="_blank">3D坦克</a><i>2025-02-08</i>
+			</div>
 		</div>
-		<div class="link">
-			<a href="https://aaarynt.github.io/War%20movies" target="_blank">War movies</a><i>2025-06-06</i>
-		</div>
-		<div class="link">
-			<a href="https://aaarynt.github.io/Speeds%20difference" target="_blank">Speeds difference</a
-			><i>2025-05-18</i>
-		</div>
-		<div class="link">
-			<a href="https://aaarynt.github.io/Solar%20System" target="_blank">Solar System</a><i>2025-05-08</i>
-		</div>
-		<div class="link">
-			<a href="https://aaarynt.github.io/%E5%8F%98%E8%89%B2%E9%BE%99" target="_blank">变色龙</a><i>2025-04-14</i>
-		</div>
-		<div class="link"><a href="https://aaarynt.github.io/3DTANK" target="_blank">3D坦克</a><i>2025-02-08</i></div>
+		<footer>I'm in classroom 707,Zone 2,C.U.C.N.</footer>
+		<div class="bkc"></div>
+		<audio src="Images/Sound/over.mp3" id="over"></audio>
 		<script>
 			updateTime();
 			setInterval(updateTime, 1000);
@@ -91,14 +130,27 @@
 					.toString()
 					.padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 			}
-			const text = "你好，欢迎来到我的主页!以下是我做的前端页面：";
+			const text = "Hello, this is my homepage!Here are my frontend pages:";
 			let index = 0;
 			document.addEventListener("DOMContentLoaded", () => {
 				setInterval(() => {
 					if (index < text.length) {
 						document.querySelector("#introduce").innerHTML += text[index++];
 					}
-				}, 150);
+				}, 100);
+			});
+			document.querySelectorAll(".link").forEach(i => {
+				i.addEventListener("click", () => {
+					const aTag = i.querySelector("a");
+					if (aTag) {
+						window.open(aTag.href, "_blank");
+					}
+				});
+				i.addEventListener("mouseover", () => {
+					const over = document.querySelector("#over");
+					over.currentTime = 0;
+					over.play();
+				});
 			});
 		</script>
 	</body>
