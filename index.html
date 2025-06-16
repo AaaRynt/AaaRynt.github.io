@@ -117,8 +117,11 @@
 		</div>
 		<footer>I'm in classroom 707,Zone 2,C.U.C.N.</footer>
 		<div class="bkc"></div>
-		<audio src="Images/Sound/over.mp3" id="over"></audio>
+		<audio src="Sounds/over.mp3" id="over"></audio>
+		<audio src="Sounds/click.wav" id="click"></audio>
 		<script>
+			const over = document.querySelector("#over"),
+				click = document.querySelector("#click");
 			updateTime();
 			setInterval(updateTime, 1000);
 			function updateTime() {
@@ -147,9 +150,12 @@
 					}
 				});
 				i.addEventListener("mouseover", () => {
-					const over = document.querySelector("#over");
 					over.currentTime = 0;
 					over.play();
+				});
+				i.addEventListener("click", () => {
+					click.currentTime = 0;
+					click.play();
 				});
 			});
 		</script>
