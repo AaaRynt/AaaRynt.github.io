@@ -27,7 +27,7 @@
 			height: 100vh;
 			background: linear-gradient(to left bottom, rgb(40, 20, 10), rgb(10, 40, 20), rgb(20, 10, 40));
 			background-size: 100%;
-			animation: change 4s linear infinite;
+			animation: change 5s linear infinite;
 		}
 		@keyframes change {
 			100% {
@@ -95,26 +95,13 @@
 		<h1>Welcome!</h1>
 		<div id="introduce"></div>
 		<div id="nav">
-			<div class="link">
-				<a href="https://aaarynt.github.io/HTML/Pac%20man" target="_blank">Pac man </a><i>2025-06-15</i>
-			</div>
-			<div class="link">
-				<a href="https://aaarynt.github.io/HTML/War%20movies" target="_blank">War movies</a><i>2025-06-06</i>
-			</div>
-			<div class="link">
-				<a href="https://aaarynt.github.io/HTML/Speeds%20difference" target="_blank">Speeds difference</a
-				><i>2025-05-18</i>
-			</div>
-			<div class="link">
-				<a href="https://aaarynt.github.io/HTML/Solar%20System" target="_blank">Solar System</a><i>2025-05-08</i>
-			</div>
-			<div class="link">
-				<a href="https://aaarynt.github.io/HTML/%E5%8F%98%E8%89%B2%E9%BE%99" target="_blank">变色龙</a
-				><i>2025-04-14</i>
-			</div>
-			<div class="link">
-				<a href="https://aaarynt.github.io/HTML/3DTANK.html" target="_blank">3D坦克</a><i>2025-02-08</i>
-			</div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/CRUD.html" target="_blank">Create,Read,Update,Delete</a><i>2025-06-19</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/Pac%20man" target="_blank">Pac man</a><i>2025-06-15</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/War%20movies.html" target="_blank">War movies</a><i>2025-06-06</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/Speeds%20difference" target="_blank">Speeds difference</a><i>2025-05-18</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/Solar%20System" target="_blank">Solar System</a><i>2025-05-08</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/%E5%8F%98%E8%89%B2%E9%BE%99" target="_blank">变色龙</a><i>2025-04-14</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/3DTANK.html" target="_blank">3D坦克</a><i>2025-02-08</i></div>
 		</div>
 		<footer>I'm in classroom 707,Zone 2,C.U.C.N.</footer>
 		<div class="bkc"></div>
@@ -130,9 +117,7 @@
 				const seconds = now.getSeconds();
 				const minutes = now.getMinutes();
 				const hours = now.getHours();
-				document.querySelector("#time").innerHTML = `${hours.toString().padStart(2, "0")}:${minutes
-					.toString()
-					.padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+				document.querySelector("#time").innerHTML = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 			}
 			const text = "Hello, this is my homepage!Here are my frontend pages:";
 			let index = 0;
