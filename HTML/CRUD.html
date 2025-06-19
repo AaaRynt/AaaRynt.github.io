@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Create,Read,Update,Delete</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet" />
+		<style>
+			body {
+				height: 100vh;
+				margin: 0px;
+				background: rgb(40, 44, 52);
+				color: rgb(171, 178, 191);
+				display: flex;
+				align-items: center;
+				justify-content: start;
+				flex-direction: column;
+				font-family: "WDXL Lubrifont SC", sans-serif;
+				font-size: 20px;
+				font-weight: 400;
+				font-style: normal;
+			}
+			table {
+				width: 70%;
+				border: 4px ridge lightblue;
+				border-collapse: collapse;
+				box-shadow: black 0px 4px 10px 4px;
+			}
+			th,
+			td {
+				padding: 0px;
+				text-align: center;
+				height: 30px;
+				border: 1px dashed rgb(171, 178, 191);
+				border-right: none;
+				border-collapse: collapse;
+			}
+			td {
+				height: 60px;
+			}
+			.ID {
+				font-family: Consolas;
+				color: pink;
+				cursor: copy;
+			}
+			button {
+				all: unset;
+				color: white;
+				text-align: center;
+				transition: 0.3s;
+				line-height: 0.5;
+				cursor: pointer;
+			}
+			.Delete:hover {
+				color: red;
+				transform: scale(1.1);
+				text-shadow: 0px 4px 4px black;
+			}
+			.Update:hover {
+				color: lime;
+				transform: scale(1.1);
+				text-shadow: 0px 4px 4px black;
+			}
+			.Delete:active,
+			.Update:active {
+				transform: scale(0.9);
+			}
+			#Create {
+				position: absolute;
+				font-size: 60px;
+				padding: 10px;
+				transform: translateY(var(--y-offset, 100px));
+			}
+			#Create:hover {
+				transform: translateY(var(--y-offset, 100px)) scale(1.1);
+				text-shadow: 0px 4px 4px black;
+			}
+			#Create:active {
+				transform: translateY(var(--y-offset, 100px)) scale(0.9);
+			}
+			#copy {
+				display: none;
+				position: fixed;
+				top: 5%;
+				left: 50%;
+				transform: translateX(-50%);
+				background: rgba(0, 0, 0, 0.8);
+				padding: 10px 20px;
+				border-radius: 8px;
+				font-size: 16px;
+				z-index: 9999;
+				opacity: 0;
+				transition: 0.3s;
+			}
+		</style>
+	</head>
+	<body>
+		<--好吧序号，随机生成数，用户输入的姓名，调用的摄像头，填表时间，用户位置>
+		<table>
+			<caption style="padding: 10px">
+				该页面仅仅作为一个实现效果，并不会上传用户的数据（还在开发中……）
+			</caption>
+			<thead>
+				<tr>
+					<th>Not</th>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Picture</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Location</th>
+					<th>Modify</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+
+		<button id="Create">+</button>
+		<div id="copy">已复制！</div>
+
+		<script>
+			let not = 0;
+			let offset = 100;
+			const createBtn = document.getElementById("Create");
+
+			function Random() {
+				const chars = "01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+				let result = "";
+				for (let i = 0; i < 6; i++) {
+					const Index = Math.floor(Math.random() * chars.length);
+					result += chars[Index];
+				}
+				return result;
+			}
+
+			createBtn.addEventListener("click", function () {
+				const date = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate()}`;
+				const time = `${new Date().getHours()}:${new Date().getMinutes().toString().padStart(2, "0")}:${new Date().getSeconds().toString().padStart(2, "0")}`;
+				const tr = document.querySelector("tbody").insertRow();
+
+				offset += 60;
+				createBtn.style.setProperty("--y-offset", `${offset}px`);
+
+				tr.innerHTML = `
+                <td>${++not}</td>
+                <td class="ID">${Random()}</td>
+                <td><input type="text" style="width:40%"></td>
+                <td>照片</td>
+                <td>${date}</td> 
+                <td>${time}</td>
+                <td>11.4,51.4</td> 
+                <td>
+                    <button class="Update">Update</button> 
+                    <button class="Delete">Delete</button>
+                </td>
+            `;
+
+				tr.querySelector("input").addEventListener("change", e => {
+					e.target.closest("td").innerHTML = e.target.value;
+				});
+
+				tr.querySelector(".Delete").addEventListener("click", e => {
+					offset -= 60;
+					createBtn.style.setProperty("--y-offset", `${offset}px`);
+					e.target.closest("tr").remove();
+				});
+
+				tr.querySelector(".ID").addEventListener("click", e => {
+					const text = e.target.innerText;
+					const textarea = document.createElement("textarea");
+					textarea.value = text;
+					document.body.appendChild(textarea);
+					textarea.select();
+					document.execCommand("copy");
+					document.body.removeChild(textarea);
+
+					const copy = document.getElementById("copy");
+					copy.style.display = "block";
+					copy.style.opacity = 1;
+					setTimeout(() => {
+						copy.style.opacity = 0;
+						setTimeout(() => {
+							copy.style.display = "none";
+						}, 850);
+					}, 800);
+				});
+			});
+		</script>
+	</body>
+</html>
