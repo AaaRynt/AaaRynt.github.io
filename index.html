@@ -25,7 +25,7 @@
 			left: 0;
 			width: 100vw;
 			height: 100vh;
-			background: linear-gradient(to left bottom, rgb(40, 20, 10), rgb(10, 40, 20), rgb(20, 10, 40));
+			background: conic-gradient(hsl(0, 50%, 10%), hsl(120, 50%, 10%), hsl(240, 50%, 10%), hsl(360, 50%, 10%));
 			background-size: 100%;
 			animation: change 5s linear infinite;
 		}
@@ -62,12 +62,12 @@
 			transition: 0.2s;
 		}
 		.link:hover {
-			background-color: rgb(100, 200, 250);
-			box-shadow: 0 4px 10px rgba(100, 200, 250, 0.5);
+			background-color: rgb(100, 200, 255);
+			box-shadow: 0 4px 10px rgba(100, 200, 255, 0.5);
 			transform: scale(1.025) translate(0, -4px);
 		}
 		.link:active {
-			background-color: rgb(150, 100, 200);
+			background-color: rgb(200, 100, 200);
 			box-shadow: none;
 			transform: scale(0.975) translate(0, 2px);
 		}
@@ -95,12 +95,13 @@
 		<h1>Welcome!</h1>
 		<div id="introduce"></div>
 		<div id="nav">
+			<div class="link"><a href="https://aaarynt.github.io/HTML/%E7%BB%98%E7%94%BB%E6%9D%BF.html" target="_blank">绘画板</a><i>2025-06-21</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/HTML/CRUD.html" target="_blank">Create,Read,Update,Delete</a><i>2025-06-19</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/Pac%20man" target="_blank">Pac man</a><i>2025-06-15</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/Pac%20man.html" target="_blank">Pac man</a><i>2025-06-15</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/HTML/War%20movies.html" target="_blank">War movies</a><i>2025-06-06</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/Speeds%20difference" target="_blank">Speeds difference</a><i>2025-05-18</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/Solar%20System" target="_blank">Solar System</a><i>2025-05-08</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/%E5%8F%98%E8%89%B2%E9%BE%99" target="_blank">变色龙</a><i>2025-04-14</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/Speeds%20difference.html" target="_blank">Speeds difference</a><i>2025-05-18</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/Solar%20System.html" target="_blank">Solar System</a><i>2025-05-08</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/HTML/%E5%8F%98%E8%89%B2%E9%BE%99.html" target="_blank">变色龙</a><i>2025-04-14</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/HTML/3DTANK.html" target="_blank">3D坦克</a><i>2025-02-08</i></div>
 		</div>
 		<footer>I'm in classroom 707,Zone 2,C.U.C.N.</footer>
@@ -119,7 +120,7 @@
 				const hours = now.getHours();
 				document.querySelector("#time").innerHTML = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 			}
-			const text = "Hello, this is my homepage!Here are my frontend pages:";
+			const text = "Hello, this is my homepage!Here are my frontend projects:";
 			let index = 0;
 			document.addEventListener("DOMContentLoaded", () => {
 				setInterval(() => {
