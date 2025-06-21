@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>绘画板</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+	</head>
+
+	<style>
+		body {
+			height: 100vh;
+			margin: 0;
+			background: rgb(40, 44, 52);
+			color: rgb(171, 178, 191);
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			font-family: "Shadows Into Light", cursive;
+			font-size: 20px;
+			font-weight: 400;
+			font-style: normal;
+		}
+		#control {
+			position: absolute;
+			bottom: 2%;
+		}
+		#main,
+		#preview {
+			position: absolute;
+			top: 2%;
+			cursor: crosshair;
+		}
+		div {
+			display: flex;
+			align-items: center;
+			display: flex;
+			gap: 5px;
+		}
+		button {
+			all: unset;
+			text-align: center;
+			color: black;
+			background-color: skyblue;
+			margin: 10px;
+			height: 30px;
+			width: 80px;
+			box-shadow: rgba(50, 50, 50, 0.5) 0px 0px 10px;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: all 0.2s;
+		}
+		button:hover {
+			color: white;
+			transform: scale(1.1);
+			background-color: deepskyblue;
+		}
+		button:active {
+			color: red;
+			transform: scale(0.9);
+			background-color: blue;
+		}
+	</style>
+	<body>
+		<canvas id="main"></canvas>
+		<canvas id="preview"></canvas>
+		<div id="control">
+			<label for="bcg">画布颜色</label>
+			<input type="color" id="bcg" value="#000000" />
+			<label for="pen">画笔颜色</label>
+			<input type="color" id="pen" value="#ffffff" />
+			<label for="width">画笔宽度</label>
+			<input type="range" id="width" min="1" max="50" value="1" />
+			<button id="undo">撤销</button>
+			<button id="redo">恢复</button>
+			<button id="save">保存图片</button>
+			<button id="clear">清空画布</button>
+		</div>
+
+		<script>
+			const history = [],
+				redoStack = [],
+				main = document.querySelector("#main"),
+				preview = document.querySelector("#preview"),
+				ctx = main.getContext("2d"),
+				pctx = preview.getContext("2d"),
+				bcg = document.querySelector("#bcg"),
+				pen = document.querySelector("#pen"),
+				width = document.querySelector("#width"),
+				undo = document.getElementById("#undo"),
+				redo = document.getElementById("#redo"),
+				save = document.getElementById("#save"),
+				clear = document.getElementById("#clear");
+			let drawing = false,
+				lastX = 0,
+				lastY = 0;
+			main.width = preview.width = window.innerWidth * 0.98;
+			main.height = preview.height = window.innerHeight * 0.9;
+			main.style.background = bcg.value;
+			preview.style.pointerEvents = "none";
+
+			bcg.addEventListener("change", () => {
+				main.style.background = bcg.value;
+			});
+			main.addEventListener("mousedown", e => {
+				drawing = true;
+				[lastX, lastY] = [e.offsetX, e.offsetY];
+				// ✅ 记录当前状态，作为“回退前的快照”
+				if (history.length > 50) history.shift();
+				history.push(main.toDataURL());
+				// ✅ 一旦用户开始画，redoStack 应该被清空
+				redoStack.length = 0;
+			});
+			main.addEventListener("mousemove", e => {
+				if (drawing) {
+					ctx.strokeStyle = pen.value;
+					ctx.lineWidth = width.value;
+					ctx.lineCap = "round";
+					ctx.beginPath();
+					ctx.moveTo(lastX, lastY);
+					ctx.lineTo(e.offsetX, e.offsetY);
+					ctx.stroke();
+					[lastX, lastY] = [e.offsetX, e.offsetY];
+				}
+
+				pctx.clearRect(0, 0, preview.width, preview.height);
+				if (width.value > 4 && !drawing) {
+					main.style.cursor = "none";
+					preview.style.cursor = "none";
+					pctx.strokeStyle = pen.value;
+					pctx.lineWidth = 1;
+					pctx.beginPath();
+					pctx.arc(e.offsetX, e.offsetY, width.value / 2, 0, Math.PI * 2);
+					pctx.stroke();
+				} else {
+					main.style.cursor = "crosshair";
+					preview.style.cursor = "crosshair";
+				}
+			});
+			main.addEventListener("mouseup", () => {
+				drawing = false;
+			});
+			main.addEventListener("mouseleave", () => {
+				drawing = false;
+				pctx.clearRect(0, 0, preview.width, preview.height);
+			});
+
+			undo.addEventListener("click", () => {
+				if (history.length > 0) {
+					redoStack.push(main.toDataURL());
+					const img = new Image();
+					img.src = history.pop();
+					img.onload = () => {
+						ctx.clearRect(0, 0, main.width, main.height);
+						ctx.drawImage(img, 0, 0);
+					};
+				}
+			});
+			redo.addEventListener("click", () => {
+				if (redoStack.length > 0) {
+					history.push(main.toDataURL());
+					const img = new Image();
+					img.src = redoStack.pop();
+					img.onload = () => {
+						ctx.clearRect(0, 0, main.width, main.height);
+						ctx.drawImage(img, 0, 0);
+					};
+				}
+			});
+			save.addEventListener("click", () => {
+				const link = document.createElement("a");
+				link.download = "drawing.png";
+				link.href = main.toDataURL("image/png");
+				link.click();
+			});
+			clear.addEventListener("click", () => {
+				ctx.clearRect(0, 0, main.width, main.height);
+			});
+
+			window.addEventListener("keydown", e => {
+				if (e.ctrlKey && e.key === "z") {
+					undo.click();
+				}
+				if (e.ctrlKey && e.key === "y") {
+					redo.click();
+				}
+				if (e.ctrlKey && e.key === "s") {
+					save.click();
+				}
+			});
+		</script>
+	</body>
+</html>
