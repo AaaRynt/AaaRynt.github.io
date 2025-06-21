@@ -168,8 +168,7 @@
 			main.addEventListener("mouseup", e => {
 				drawing = false;
 				pctx.clearRect(0, 0, preview.width, preview.height);
-
-				ctx.strokeStyle = pen.value;
+				pctx.strokeStyle = ctx.fillStyle = pen.value;
 				ctx.lineWidth = width.value;
 				ctx.lineCap = "round";
 				ctx.beginPath();
