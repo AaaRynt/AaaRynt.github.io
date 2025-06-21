@@ -8,7 +8,6 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
 	</head>
-
 	<style>
 		body {
 			height: 100vh;
@@ -23,17 +22,18 @@
 			font-weight: 400;
 			font-style: normal;
 		}
-		#control {
-			position: absolute;
-			bottom: 2%;
-		}
 		#main,
 		#preview {
 			position: absolute;
-			top: 2%;
+			top: 3%;
 			cursor: crosshair;
 		}
-		div {
+		#xy{
+			position: absolute;
+		}
+		#control {
+			position: absolute;
+			bottom: 0px;
 			display: flex;
 			align-items: center;
 			display: flex;
@@ -66,6 +66,7 @@
 	<body>
 		<canvas id="main"></canvas>
 		<canvas id="preview"></canvas>
+		<div id="xy">(x,y)</div>
 		<div id="control">
 			<label for="bcg">画布颜色</label>
 			<input type="color" id="bcg" value="#000000" />
@@ -73,6 +74,10 @@
 			<input type="color" id="pen" value="#ffffff" />
 			<label for="width">画笔宽度</label>
 			<input type="range" id="width" min="1" max="50" value="1" />
+			<button id="free">画笔</button>
+			<button id="line">线条</button>
+			<button id="rect">矩形</button>
+			<button id="fillrect">矩形填充</button>
 			<button id="undo">撤销</button>
 			<button id="redo">恢复</button>
 			<button id="save">保存图片</button>
@@ -82,6 +87,7 @@
 		<script>
 			const history = [],
 				redoStack = [],
+				xy = document.querySelector("#xy"),
 				main = document.querySelector("#main"),
 				preview = document.querySelector("#preview"),
 				ctx = main.getContext("2d"),
@@ -89,58 +95,97 @@
 				bcg = document.querySelector("#bcg"),
 				pen = document.querySelector("#pen"),
 				width = document.querySelector("#width"),
-				undo = document.getElementById("#undo"),
-				redo = document.getElementById("#redo"),
-				save = document.getElementById("#save"),
-				clear = document.getElementById("#clear");
+				undo = document.querySelector("#undo"),
+				redo = document.querySelector("#redo"),
+				save = document.querySelector("#save"),
+				clear = document.querySelector("#clear"),
+				free = document.querySelector("#free"),
+				line = document.querySelector("#line"),
+				rect = document.querySelector("#rect"),
+				fillrect = document.querySelector("#fillrect");
+
 			let drawing = false,
 				lastX = 0,
-				lastY = 0;
+				lastY = 0,
+				mode = "free";
+
 			main.width = preview.width = window.innerWidth * 0.98;
-			main.height = preview.height = window.innerHeight * 0.9;
+			main.height = preview.height = window.innerHeight * 0.90;
 			main.style.background = bcg.value;
 			preview.style.pointerEvents = "none";
 
 			bcg.addEventListener("change", () => {
 				main.style.background = bcg.value;
 			});
+			free.addEventListener("click", () => {
+				mode = "free";
+			});
+			line.addEventListener("click", () => {
+				mode = "line";
+			});
+			rect.addEventListener("click", () => {
+				mode = "rect";
+			});
+			fillrect.addEventListener("click", () => {
+				mode = "fillrect";
+			});
+
 			main.addEventListener("mousedown", e => {
 				drawing = true;
 				[lastX, lastY] = [e.offsetX, e.offsetY];
-				// ✅ 记录当前状态，作为“回退前的快照”
 				if (history.length > 50) history.shift();
 				history.push(main.toDataURL());
-				// ✅ 一旦用户开始画，redoStack 应该被清空
 				redoStack.length = 0;
 			});
 			main.addEventListener("mousemove", e => {
-				if (drawing) {
-					ctx.strokeStyle = pen.value;
-					ctx.lineWidth = width.value;
-					ctx.lineCap = "round";
-					ctx.beginPath();
-					ctx.moveTo(lastX, lastY);
-					ctx.lineTo(e.offsetX, e.offsetY);
-					ctx.stroke();
-					[lastX, lastY] = [e.offsetX, e.offsetY];
-				}
-
 				pctx.clearRect(0, 0, preview.width, preview.height);
-				if (width.value > 4 && !drawing) {
-					main.style.cursor = "none";
-					preview.style.cursor = "none";
-					pctx.strokeStyle = pen.value;
-					pctx.lineWidth = 1;
-					pctx.beginPath();
-					pctx.arc(e.offsetX, e.offsetY, width.value / 2, 0, Math.PI * 2);
-					pctx.stroke();
-				} else {
-					main.style.cursor = "crosshair";
-					preview.style.cursor = "crosshair";
+				xy.textContent=`(${e.offsetX}, ${e.offsetY})`
+				if (!drawing) return;
+				pctx.strokeStyle = ctx.fillStyle = pen.value;
+				pctx.lineWidth = width.value;
+				pctx.lineCap = "round";
+				pctx.beginPath();
+				switch (mode) {
+					case "free":
+						ctx.moveTo(lastX, lastY);
+						ctx.lineTo(e.offsetX, e.offsetY);
+						ctx.stroke();
+						[lastX, lastY] = [e.offsetX, e.offsetY];
+						break;
+					case "line":
+						pctx.moveTo(lastX, lastY);
+						pctx.lineTo(e.offsetX, e.offsetY);
+						break;
+					case "rect":
+						pctx.strokeRect(lastX, lastY, e.offsetX - lastX, e.offsetY - lastY);
+						break;
+					case "fillrect":
+						pctx.fillRect(lastX, lastY, e.offsetX - lastX, e.offsetY - lastY);
+						break;
 				}
+				pctx.stroke();
 			});
-			main.addEventListener("mouseup", () => {
+			main.addEventListener("mouseup", e => {
 				drawing = false;
+				pctx.clearRect(0, 0, preview.width, preview.height);
+
+				ctx.strokeStyle = pen.value;
+				ctx.lineWidth = width.value;
+				ctx.lineCap = "round";
+				ctx.beginPath();
+				switch (mode) {
+					case "line":
+						ctx.moveTo(lastX, lastY);
+						ctx.lineTo(e.offsetX, e.offsetY);
+						break;
+					case "rect":
+						ctx.strokeRect(lastX, lastY, e.offsetX - lastX, e.offsetY - lastY);
+						break;
+					case "fillrect":
+						ctx.fillRect(lastX, lastY, e.offsetX - lastX, e.offsetY - lastY);
+						break;
+				}
+				ctx.stroke();
 			});
 			main.addEventListener("mouseleave", () => {
 				drawing = false;
@@ -178,17 +223,10 @@
 			clear.addEventListener("click", () => {
 				ctx.clearRect(0, 0, main.width, main.height);
 			});
-
 			window.addEventListener("keydown", e => {
-				if (e.ctrlKey && e.key === "z") {
-					undo.click();
-				}
-				if (e.ctrlKey && e.key === "y") {
-					redo.click();
-				}
-				if (e.ctrlKey && e.key === "s") {
-					save.click();
-				}
+				if (e.ctrlKey && e.key === "z") undo.click();
+				if (e.ctrlKey && e.key === "y") redo.click();
+				if (e.ctrlKey && e.key === "s") save.click();
 			});
 		</script>
 	</body>
