@@ -7,6 +7,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
 	</head>
 	<style>
 		:root {
@@ -23,7 +24,7 @@
 			flex-direction: column;
 			font-family: "Shadows Into Light", cursive;
 			font-size: 20px;
-			font-weight: 400;
+			font-weight: 800;
 			font-style: normal;
 		}
 		#main,
@@ -49,8 +50,8 @@
 			text-align: center;
 			background: var(--bcg);
 			color: var(--font);
-			height: 40px;
-			width: 50px;
+			height: 30px;
+			width: 40px;
 			box-shadow: rgba(0, 0, 0, 0.4) 4px 2px 4px, rgba(255, 255, 255, 0.4) -4px -2px 4px, rgba(0, 0, 0, 0.4) -4px -2px 2px inset;
 			border-radius: 8px;
 			cursor: pointer;
@@ -88,32 +89,28 @@
 			<label for="width">Pen width</label>
 			<input type="range" id="width" min="1" max="50" value="1" />
 			<button id="free" class="clicked">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M12.8995 6.85453L17.1421 11.0972L7.24264 20.9967H3V16.754L12.8995 6.85453ZM14.3137 5.44032L16.435 3.319C16.8256 2.92848 17.4587 2.92848 17.8492 3.319L20.6777 6.14743C21.0682 6.53795 21.0682 7.17112 20.6777 7.56164L18.5563 9.68296L14.3137 5.44032Z"></path></svg>
+				<i class="ri-pencil-fill"></i>
 			</button>
 			<button id="line">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)">
-					<path
-						d="M4.92901 13.3138L7.05033 15.4351L8.46455 14.0209L6.34323 11.8996L8.46455 9.77828L11.293 12.6067L12.7072 11.1925L9.87876 8.36407L12.0001 6.24275L14.1214 8.36407L15.5356 6.94986L13.4143 4.82853L16.2427 2.00011C16.6332 1.60958 17.2664 1.60958 17.6569 2.00011L22.6067 6.94986C22.9972 7.34038 22.9972 7.97354 22.6067 8.36407L7.75744 23.2133C7.36692 23.6038 6.73375 23.6038 6.34323 23.2133L1.39348 18.2636C1.00295 17.873 1.00295 17.2399 1.39348 16.8494L4.92901 13.3138Z"
-					></path>
-				</svg>
+				<i class="ri-ruler-line"></i>
 			</button>
 			<button id="rect">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M3 4H21C21.5523 4 22 4.44772 22 5V19C22 19.5523 21.5523 20 21 20H3C2.44772 20 2 19.5523 2 19V5C2 4.44772 2.44772 4 3 4ZM4 6V18H20V6H4Z"></path></svg>
+				<i class="ri-rectangle-line"></i>
 			</button>
 			<button id="fillrect">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M3 4H21C21.5523 4 22 4.44772 22 5V19C22 19.5523 21.5523 20 21 20H3C2.44772 20 2 19.5523 2 19V5C2 4.44772 2.44772 4 3 4Z"></path></svg>
+				<i class="ri-rectangle-fill"></i>
 			</button>
 			<button id="undo">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M5.82843 6.99955L8.36396 9.53509L6.94975 10.9493L2 5.99955L6.94975 1.0498L8.36396 2.46402L5.82843 4.99955H13C17.4183 4.99955 21 8.58127 21 12.9996C21 17.4178 17.4183 20.9996 13 20.9996H4V18.9996H13C16.3137 18.9996 19 16.3133 19 12.9996C19 9.68584 16.3137 6.99955 13 6.99955H5.82843Z"></path></svg>
+				<i class="ri-arrow-go-back-line"></i>
 			</button>
 			<button id="redo">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M18.1716 6.99955H11C7.68629 6.99955 5 9.68584 5 12.9996C5 16.3133 7.68629 18.9996 11 18.9996H20V20.9996H11C6.58172 20.9996 3 17.4178 3 12.9996C3 8.58127 6.58172 4.99955 11 4.99955H18.1716L15.636 2.46402L17.0503 1.0498L22 5.99955L17.0503 10.9493L15.636 9.53509L18.1716 6.99955Z"></path></svg>
+				<i class="ri-arrow-go-forward-line"></i>
 			</button>
 			<button id="save">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M13 10H18L12 16L6 10H11V3H13V10ZM4 19H20V12H22V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V12H4V19Z"></path></svg>
+				<i class="ri-download-2-line"></i>
 			</button>
 			<button id="clear">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"></path></svg>
+				<i class="ri-delete-bin-line"></i>
 			</button>
 		</div>
 		<script>
@@ -189,7 +186,7 @@
 			main.addEventListener("mousemove", e => {
 				pctx.clearRect(0, 0, preview.width, preview.height);
 				xy.textContent = `(${e.offsetX},${e.offsetY})`;
-				if (!drawing && width.value > 4) {
+				if (!drawing && width.value >= 4) {
 					main.style.cursor = "none";
 					preview.style.cursor = "none";
 					pctx.strokeStyle = pen.value;
