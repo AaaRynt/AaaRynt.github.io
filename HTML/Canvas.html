@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Canvas</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+	</head>
+	<style>
+		:root {
+			--bcg: rgb(40, 44, 52);
+			--font: rgb(171, 178, 191);
+		}
+		body {
+			height: 100vh;
+			margin: 0;
+			background: var(--bcg);
+			color: var(--font);
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			font-family: "Shadows Into Light", cursive;
+			font-size: 20px;
+			font-weight: 400;
+			font-style: normal;
+		}
+		#main,
+		#preview {
+			position: absolute;
+			top: 3%;
+			cursor: crosshair;
+		}
+		#xy {
+			position: absolute;
+			font-family: Consolas;
+		}
+		#control {
+			position: absolute;
+			bottom: 6px;
+			display: flex;
+			align-items: center;
+			display: flex;
+			gap: 16px;
+		}
+		button {
+			all: unset;
+			text-align: center;
+			background: var(--bcg);
+			color: var(--font);
+			height: 40px;
+			width: 50px;
+			box-shadow: rgba(0, 0, 0, 0.4) 4px 2px 4px, rgba(255, 255, 255, 0.4) -4px -2px 4px, rgba(0, 0, 0, 0.4) -4px -2px 2px inset;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: all 0.2s;
+		}
+		button:hover {
+			transform: scale(1.05);
+			filter: brightness(1.2);
+		}
+		button:active {
+			background: var(--bcg);
+			color: var(--font);
+			box-shadow: rgba(0, 0, 0, 0.4) 4px 2px 4px inset, rgba(255, 255, 255, 0.4) -4px -2px 2px inset;
+			transform: scale(0.8);
+			filter: brightness(0.6);
+		}
+		button.clicked {
+			cursor: not-allowed;
+			background: var(--bcg);
+			color: var(--font);
+			box-shadow: rgba(0, 0, 0, 0.4) 4px 2px 4px inset, rgba(255, 255, 255, 0.4) -4px -2px 2px inset;
+			transform: scale(0.9);
+			filter: brightness(0.9);
+		}
+	</style>
+	<body>
+		<canvas id="main"></canvas>
+		<canvas id="preview"></canvas>
+		<div id="xy">(x,y)</div>
+		<div id="control">
+			<label for="bcg">Canvas color</label>
+			<input type="color" id="bcg" value="#000000" />
+			<label for="pen">Pen color</label>
+			<input type="color" id="pen" value="#ffffff" />
+			<label for="width">Pen width</label>
+			<input type="range" id="width" min="1" max="50" value="1" />
+			<button id="free" class="clicked">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M12.8995 6.85453L17.1421 11.0972L7.24264 20.9967H3V16.754L12.8995 6.85453ZM14.3137 5.44032L16.435 3.319C16.8256 2.92848 17.4587 2.92848 17.8492 3.319L20.6777 6.14743C21.0682 6.53795 21.0682 7.17112 20.6777 7.56164L18.5563 9.68296L14.3137 5.44032Z"></path></svg>
+			</button>
+			<button id="line">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)">
+					<path
+						d="M4.92901 13.3138L7.05033 15.4351L8.46455 14.0209L6.34323 11.8996L8.46455 9.77828L11.293 12.6067L12.7072 11.1925L9.87876 8.36407L12.0001 6.24275L14.1214 8.36407L15.5356 6.94986L13.4143 4.82853L16.2427 2.00011C16.6332 1.60958 17.2664 1.60958 17.6569 2.00011L22.6067 6.94986C22.9972 7.34038 22.9972 7.97354 22.6067 8.36407L7.75744 23.2133C7.36692 23.6038 6.73375 23.6038 6.34323 23.2133L1.39348 18.2636C1.00295 17.873 1.00295 17.2399 1.39348 16.8494L4.92901 13.3138Z"
+					></path>
+				</svg>
+			</button>
+			<button id="rect">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M3 4H21C21.5523 4 22 4.44772 22 5V19C22 19.5523 21.5523 20 21 20H3C2.44772 20 2 19.5523 2 19V5C2 4.44772 2.44772 4 3 4ZM4 6V18H20V6H4Z"></path></svg>
+			</button>
+			<button id="fillrect">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M3 4H21C21.5523 4 22 4.44772 22 5V19C22 19.5523 21.5523 20 21 20H3C2.44772 20 2 19.5523 2 19V5C2 4.44772 2.44772 4 3 4Z"></path></svg>
+			</button>
+			<button id="undo">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M5.82843 6.99955L8.36396 9.53509L6.94975 10.9493L2 5.99955L6.94975 1.0498L8.36396 2.46402L5.82843 4.99955H13C17.4183 4.99955 21 8.58127 21 12.9996C21 17.4178 17.4183 20.9996 13 20.9996H4V18.9996H13C16.3137 18.9996 19 16.3133 19 12.9996C19 9.68584 16.3137 6.99955 13 6.99955H5.82843Z"></path></svg>
+			</button>
+			<button id="redo">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M18.1716 6.99955H11C7.68629 6.99955 5 9.68584 5 12.9996C5 16.3133 7.68629 18.9996 11 18.9996H20V20.9996H11C6.58172 20.9996 3 17.4178 3 12.9996C3 8.58127 6.58172 4.99955 11 4.99955H18.1716L15.636 2.46402L17.0503 1.0498L22 5.99955L17.0503 10.9493L15.636 9.53509L18.1716 6.99955Z"></path></svg>
+			</button>
+			<button id="save">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M13 10H18L12 16L6 10H11V3H13V10ZM4 19H20V12H22V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V12H4V19Z"></path></svg>
+			</button>
+			<button id="clear">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="rgba(171,178,191,1)"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"></path></svg>
+			</button>
+		</div>
+		<script>
+			const history = [],
+				redoStack = [],
+				xy = document.querySelector("#xy"),
+				main = document.querySelector("#main"),
+				preview = document.querySelector("#preview"),
+				ctx = main.getContext("2d"),
+				pctx = preview.getContext("2d"),
+				bcg = document.querySelector("#bcg"),
+				pen = document.querySelector("#pen"),
+				width = document.querySelector("#width"),
+				btns = document.querySelectorAll("button"),
+				free = document.querySelector("#free"),
+				line = document.querySelector("#line"),
+				rect = document.querySelector("#rect"),
+				fillrect = document.querySelector("#fillrect"),
+				undo = document.querySelector("#undo"),
+				redo = document.querySelector("#redo"),
+				save = document.querySelector("#save"),
+				clear = document.querySelector("#clear");
+
+			let drawing = false,
+				lastX = 0,
+				lastY = 0,
+				mode = "free";
+
+			main.width = preview.width = window.innerWidth * 0.98;
+			main.height = preview.height = window.innerHeight * 0.9;
+			main.style.background = bcg.value;
+			preview.style.pointerEvents = "none";
+			function nochicked() {
+				btns.forEach(i => i.classList.remove("clicked"));
+			}
+			function filename() {
+				const date = new Date();
+				const name = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}_${date.getHours().toString().padStart(2, "0")}-${date.getMinutes().toString().padStart(2, "0")}-${date.getSeconds().toString().padStart(2, "0")}.png`;
+				return name;
+			}
+
+			bcg.addEventListener("change", () => {
+				main.style.background = bcg.value;
+			});
+			free.addEventListener("click", () => {
+				mode = "free";
+				nochicked();
+				free.classList.add("clicked");
+			});
+			line.addEventListener("click", () => {
+				mode = "line";
+				nochicked();
+				line.classList.add("clicked");
+			});
+			rect.addEventListener("click", () => {
+				mode = "rect";
+				nochicked();
+				rect.classList.add("clicked");
+			});
+			fillrect.addEventListener("click", () => {
+				mode = "fillrect";
+				nochicked();
+				fillrect.classList.add("clicked");
+			});
+
+			main.addEventListener("mousedown", e => {
+				drawing = true;
+				[lastX, lastY] = [e.offsetX, e.offsetY];
+				if (history.length > 50) history.shift();
+				history.push(main.toDataURL());
+				redoStack.length = 0;
+			});
+			main.addEventListener("mousemove", e => {
+				pctx.clearRect(0, 0, preview.width, preview.height);
+				xy.textContent = `(${e.offsetX},${e.offsetY})`;
+				if (!drawing && width.value > 4) {
+					main.style.cursor = "none";
+					preview.style.cursor = "none";
+					pctx.strokeStyle = pen.value;
+					pctx.lineWidth = 1;
+					pctx.beginPath();
+					pctx.arc(e.offsetX, e.offsetY, width.value / 2, 0, Math.PI * 2);
+					pctx.stroke();
+					return;
+				} else {
+					main.style.cursor = "crosshair";
+					preview.style.cursor = "crosshair";
+				}
+				if (!drawing) return;
+				ctx.strokeStyle = pctx.strokeStyle = pctx.fillStyle = pen.value;
+				ctx.lineWidth = pctx.lineWidth = width.value;
+				pctx.lineCap = "round";
+				pctx.beginPath();
+				switch (mode) {
+					case "free":
+						ctx.beginPath();
+						ctx.moveTo(lastX, lastY);
+						ctx.lineTo(e.offsetX, e.offsetY);
+						ctx.stroke();
+						[lastX, lastY] = [e.offsetX, e.offsetY];
+						break;
+					case "line":
+						pctx.moveTo(lastX, lastY);
+						pctx.lineTo(e.offsetX, e.offsetY);
+						break;
+					case "rect":
+						pctx.strokeRect(lastX, lastY, e.offsetX - lastX, e.offsetY - lastY);
+						break;
+					case "fillrect":
+						pctx.fillRect(lastX, lastY, e.offsetX - lastX, e.offsetY - lastY);
+						break;
+				}
+				pctx.stroke();
+			});
+			main.addEventListener("mouseup", e => {
+				drawing = false;
+				pctx.clearRect(0, 0, preview.width, preview.height);
+
+				ctx.strokeStyle = ctx.fillStyle = pen.value;
+				ctx.lineWidth = width.value;
+				ctx.lineCap = "round";
+				ctx.beginPath();
+				switch (mode) {
+					case "line":
+						ctx.moveTo(lastX, lastY);
+						ctx.lineTo(e.offsetX, e.offsetY);
+						break;
+					case "rect":
+						ctx.strokeRect(lastX, lastY, e.offsetX - lastX, e.offsetY - lastY);
+						break;
+					case "fillrect":
+						ctx.fillRect(lastX, lastY, e.offsetX - lastX, e.offsetY - lastY);
+						break;
+				}
+				ctx.stroke();
+			});
+			main.addEventListener("mouseleave", () => {
+				drawing = false;
+				pctx.clearRect(0, 0, preview.width, preview.height);
+			});
+
+			undo.addEventListener("click", () => {
+				if (history.length > 0) {
+					redoStack.push(main.toDataURL());
+					const img = new Image();
+					img.src = history.pop();
+					img.onload = () => {
+						ctx.clearRect(0, 0, main.width, main.height);
+						ctx.drawImage(img, 0, 0);
+					};
+				}
+			});
+			redo.addEventListener("click", () => {
+				if (redoStack.length > 0) {
+					history.push(main.toDataURL());
+					const img = new Image();
+					img.src = redoStack.pop();
+					img.onload = () => {
+						ctx.clearRect(0, 0, main.width, main.height);
+						ctx.drawImage(img, 0, 0);
+					};
+				}
+			});
+			save.addEventListener("click", () => {
+				const link = document.createElement("a");
+				link.download = filename();
+				link.href = main.toDataURL("image/png");
+				link.click();
+			});
+			clear.addEventListener("click", () => {
+				ctx.clearRect(0, 0, main.width, main.height);
+			});
+			window.addEventListener("keydown", e => {
+				if (e.ctrlKey && e.key === "z") undo.click();
+				if (e.ctrlKey && e.key === "y") redo.click();
+				if (e.ctrlKey && e.key === "s") save.click();
+			});
+		</script>
+	</body>
+</html>
