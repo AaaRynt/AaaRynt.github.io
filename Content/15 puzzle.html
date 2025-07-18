@@ -98,7 +98,6 @@
 
 			let tiles = [],
 				num = [],
-				lastNum = [],
 				is_start = false,
 				is_move = false,
 				time = 0,
@@ -164,19 +163,20 @@
 				dom_step.textContent = `STEP: ${++step}`;
 				is_move = true;
 				if (num.join() === "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0") {
+					audio.currentTime = 0;
+					audio.play();
+					let temp_time = time;
+					time = 0;
+					is_move = false;
+					start.textContent = "GOOD😋👍";
 					setTimeout(() => {
-						alert(`Excellent!\nIt took you ${time} sec and ${step} steps.`);
-						generate();
-						start.textContent = "GOOD😋👍";
-						audio.currentTime = 0;
-						audio.play();
+						alert(`Excellent!\nIt took you ${temp_time} sec and ${step} steps.`);
 					}, 300);
 				}
 			}
 
 			function render() {
 				for (let i = 0; i < 16; i++) {
-					if (num[i] === lastNum[i]) continue;
 					const empty = num.indexOf(0),
 						row = Math.floor(i / 4),
 						col = i % 4,
@@ -201,7 +201,6 @@
 					}
 					tile.style.transform = `translate3d(${col * 120}px, ${row * 120}px, 0)`;
 				}
-				lastNum = [...num];
 			}
 			tiles.forEach((tile, i) => {
 				tile.addEventListener("click", () => {
