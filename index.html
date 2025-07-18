@@ -4,43 +4,55 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Home page</title>
-		<link rel="icon" href="Images/61.png" />
+		<link rel="icon" href="Static/Image/61.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet" />
 	</head>
 	<style>
 		body {
+			font-family: "WDXL Lubrifont SC", sans-serif;
+			font-family: "WDXL Lubrifont SC", sans-serif;
+			font-size: 20px;
+			font-weight: 200;
+			font-style: normal;
 			z-index: 1;
 			transition: 0.4s;
 			margin: 0px;
 			padding: 0px;
 			background-color: rgb(40, 44, 52);
 			color: rgb(171, 178, 191);
-			font-weight: 400;
-			font-style: normal;
 			text-align: center;
 		}
 		.bkc {
 			z-index: -1;
 			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			background: conic-gradient(hsl(0, 50%, 10%), hsl(120, 50%, 10%), hsl(240, 50%, 10%), hsl(360, 50%, 10%));
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 1000vw;
+			height: 1000vh;
+			background: conic-gradient(hsl(0, 20%, 20%), hsl(60, 20%, 20%), hsl(120, 20%, 20%), hsl(180, 20%, 20%), hsl(240, 20%, 20%), hsl(300, 20%, 20%), hsl(360, 20%, 20%));
 			background-size: 100%;
-			animation: change 5s linear infinite;
+			filter: blur(20px);
+			animation: change 10s linear infinite;
 		}
 		@keyframes change {
-			100% {
-				filter: hue-rotate(360deg);
+			from {
+				transform: translate(-50%, -50%);
+			}
+			to {
+				transform: translate(-50%, -50%) rotate(360deg);
 			}
 		}
 		#time {
+			font-family: "Press Start 2P", system-ui;
+			font-weight: 100;
+			font-style: normal;
 			position: absolute;
 			top: 2%;
 			right: 2%;
-			font-size: 20px;
 		}
-
 		#nav {
 			position: absolute;
 			width: 90%;
@@ -55,7 +67,7 @@
 			margin-top: 8px;
 			position: relative;
 			opacity: 0.7;
-			background-color: rgb(171, 178, 191);
+			background-color: rgb(255, 255, 255);
 			border-radius: 10px;
 			display: flex;
 			align-items: center;
@@ -79,7 +91,6 @@
 		}
 		a,
 		i {
-			font-size: 20px;
 			position: absolute;
 		}
 		a {
@@ -95,19 +106,19 @@
 		<h1>Welcome!</h1>
 		<div id="introduce"></div>
 		<div id="nav">
-			<div class="link"><a href="https://aaarynt.github.io/HTML/Canvas.html" target="_blank">Canvas</a><i>2025-06-21</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/CRUD.html" target="_blank">Create,Read,Update,Delete</a><i>2025-06-19</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/Pac%20man.html" target="_blank">Pac man</a><i>2025-06-15</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/War%20movies.html" target="_blank">War movies</a><i>2025-06-06</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/Speeds%20difference.html" target="_blank">Speeds difference</a><i>2025-05-18</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/Solar%20System.html" target="_blank">Solar System</a><i>2025-05-08</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/Chameleon.html" target="_blank">Chameleon</a><i>2025-04-14</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/HTML/3DTANK.html" target="_blank">3D坦克</a><i>2025-02-08</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/Content/15 puzzle.html" target="_blank">15 puzzle.html</a><i>2025-07-18</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/Content/Canvas.html" target="_blank">Canvas</a><i>2025-06-21</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/Content/CRUD.html" target="_blank">Create,Read,Update,Delete</a><i>2025-06-19</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/Content/Pac%20man.html" target="_blank">Pac man</a><i>2025-06-15</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/Content/Speeds%20difference.html" target="_blank">Speeds difference</a><i>2025-05-18</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/Content/Solar%20System.html" target="_blank">Solar System</a><i>2025-05-08</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/Content/Chameleon.html" target="_blank">Chameleon</a><i>2025-04-14</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/Content/3DTANK.html" target="_blank">3D坦克</a><i>2025-02-08</i></div>
 		</div>
 		<footer>I'm in classroom 707,Zone 2,C.U.C.N.</footer>
 		<div class="bkc"></div>
-		<audio src="Sounds/over.mp3" id="over"></audio>
-		<audio src="Sounds/click.wav" id="click"></audio>
+		<audio src="Static/Sound/over.mp3" id="over"></audio>
+		<audio src="Static/Sound/click.wav" id="click"></audio>
 		<script>
 			const over = document.querySelector("#over"),
 				click = document.querySelector("#click");
@@ -120,7 +131,7 @@
 				const hours = now.getHours();
 				document.querySelector("#time").innerHTML = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 			}
-			const text = "Hello, this is my homepage!Here are my frontend projects:";
+			const text = "Hello, this is my homepage!Here are my front-end projects:";
 			let index = 0;
 			document.addEventListener("DOMContentLoaded", () => {
 				setInterval(() => {
@@ -144,6 +155,9 @@
 					click.currentTime = 0;
 					click.play();
 				});
+			});
+			window.addEventListener("keydown", e => {
+				if (e.keyCode === 123) alert("暂时不适配移动端！");
 			});
 		</script>
 	</body>
