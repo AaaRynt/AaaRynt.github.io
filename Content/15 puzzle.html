@@ -165,12 +165,10 @@
 				if (num.join() === "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0") {
 					audio.currentTime = 0;
 					audio.play();
-					let temp_time = time;
-					time = 0;
 					is_move = false;
 					start.textContent = "GOOD😋👍";
 					setTimeout(() => {
-						alert(`Excellent!\nIt took you ${temp_time} sec and ${step} steps.`);
+						alert(`Excellent!\nIt took you ${time} sec and ${step} steps.`);
 					}, 300);
 				}
 			}
