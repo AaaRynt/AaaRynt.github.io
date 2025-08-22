@@ -193,8 +193,8 @@
 			}
 			function move(div) {
 				div.textContent = randomarr(emojis);
-				const maxLeft = window.innerWidth - div.offsetWidth - 50;
-				const maxTop = window.innerHeight - div.offsetHeight - 50;
+				const maxLeft = window.innerWidth - div.offsetWidth;
+				const maxTop = window.innerHeight - div.offsetHeight;
 				div.style.transition = `left ${randomnum()}s, top ${randomnum()}s, transform ${randomnum()}s`;
 				div.style.left = Math.random() * maxLeft + "px";
 				div.style.top = Math.random() * maxTop + "px";
@@ -221,3 +221,4 @@
 		</script>
 	</body>
 </html>
+
