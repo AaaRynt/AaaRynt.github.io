@@ -52,6 +52,18 @@
 			top: 2%;
 			right: 2%;
 		}
+		h1 {
+			position: absolute;
+			left: 50%;
+			top: -3%;
+			transform: translate(-50%, 0);
+		}
+		#introduce {
+			position: absolute;
+			left: 50%;
+			top: 5%;
+			transform: translate(-50%, 0);
+		}
 		#nav {
 			position: absolute;
 			width: 90%;
@@ -101,8 +113,8 @@
 		}
 	</style>
 	<body>
-		<time id="time">00:00:00</time>
 		<h1>Welcome!</h1>
+		<time id="time">00:00:00</time>
 		<div id="introduce"></div>
 		<div id="nav">
 			<div class="link"><a href="https://aaarynt.github.io/Content/Emojis.html" target="_blank">🌈Emojis✨</a><i>2025-08-16</i></div>
@@ -138,7 +150,7 @@
 					if (index < text.length) {
 						document.querySelector("#introduce").innerHTML += text[index++];
 					}
-				}, 100);
+				}, 80);
 			});
 			document.querySelectorAll(".link").forEach(i => {
 				i.addEventListener("click", () => {
@@ -162,4 +174,3 @@
 		</script>
 	</body>
 </html>
-
