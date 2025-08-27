@@ -281,11 +281,11 @@
 				link.href = main.toDataURL("image/png");
 				link.click();
 			});
-			clear666.addEventListener("click", () => {
+			clear.addEventListener("click", () => {
 				ctx.clearRect(0, 0, main.width, main.height);
 			});
 			window.addEventListener("keydown", e => {
-				if (e.ctrlKey && e.key === "F12") undo.click();
+				if (e.ctrlKey && e.key === "z") undo.click();
 				if (e.ctrlKey && e.key === "y") redo.click();
 				if (e.ctrlKey && e.key === "s") save.click();
 			});
