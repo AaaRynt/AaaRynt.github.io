@@ -7,11 +7,13 @@
 		<link rel="icon" href="Static/Image/61.ico" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&family=Press+Start+2P&family=Aldrich&display=swap" rel="stylesheet" />
 	</head>
 	<style>
+		* {
+			font-family: "Aldrich", sans-serif;
+		}
 		body {
-			font-family: "WDXL Lubrifont SC", sans-serif;
 			font-size: 20px;
 			font-weight: 200;
 			font-style: normal;
@@ -19,7 +21,6 @@
 			transition: 0.4s;
 			margin: 0px;
 			padding: 0px;
-			background-color: rgb(40, 44, 52);
 			color: rgb(171, 178, 191);
 			text-align: center;
 		}
@@ -73,20 +74,19 @@
 		}
 		.link {
 			cursor: help;
-			height: 60px;
+			height: 50px;
 			width: 100%;
 			margin-top: 8px;
 			position: relative;
-			opacity: 0.7;
-			background-color: rgb(255, 255, 255);
+			background-color: rgba(40, 44, 52, 0.6);
 			border-radius: 10px;
 			display: flex;
 			align-items: center;
 			transition: 0.2s;
 		}
 		.link:hover {
-			background-color: rgb(100, 200, 255);
-			box-shadow: 0 4px 10px rgba(100, 200, 255, 0.5);
+			background-color: rgba(100, 50, 200, 0.8);
+			box-shadow: 0 4px 10px rgba(150, 100, 255, 0.3);
 			transform: scale(1.025) translate(0, -4px);
 		}
 		.link:active {
@@ -106,10 +106,17 @@
 		}
 		a {
 			left: 5%;
+			text-decoration: none;
+			color: rgba(0, 255, 0, 0.4);
+			text-shadow: 0 0 3px rgba(0, 255, 0, 0.8), 0 0 8px rgba(0, 255, 0, 0.4);
+			background: repeating-linear-gradient(to bottom, rgba(0, 255, 0, 0.8) 0px, rgba(0, 255, 0, 0.8) 1px, rgba(0, 0, 0, 0.4) 2px, rgba(0, 0, 0, 0.4) 3px);
+			background-clip: text;
+			cursor: help;
 		}
 		i {
-			color: black;
-			left: 90%;
+			font-family: "WDXL Lubrifont SC", sans-serif;
+			position: absolute;
+			right: 5%;
 		}
 	</style>
 	<body>
@@ -117,15 +124,15 @@
 		<time id="time">00:00:00</time>
 		<div id="introduce"></div>
 		<div id="nav">
+			<div class="link"><a href="https://aaarynt.github.io/Content/Speeds'%20difference.html" target="_blank">Speeds' difference</a><i>2025-09-06</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/Content/Emojis.html" target="_blank">🌈Emojis✨</a><i>2025-08-16</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/Content/15 puzzle.html" target="_blank">15 puzzle</a><i>2025-07-18</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/Content/Canvas.html" target="_blank">Canvas</a><i>2025-06-21</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/Content/CRUD.html" target="_blank">Create,Read,Update,Delete</a><i>2025-06-19</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/Content/Pac%20man.html" target="_blank">Pac man</a><i>2025-06-15</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/Speeds%20difference.html" target="_blank">Speeds difference</a><i>2025-05-18</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/Content/Solar%20System.html" target="_blank">Solar System</a><i>2025-05-08</i></div>
 			<div class="link"><a href="https://aaarynt.github.io/Content/Chameleon.html" target="_blank">Chameleon</a><i>2025-04-14</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/3DTANK.html" target="_blank">3D坦克</a><i>2025-02-08</i></div>
+			<div class="link"><a href="https://aaarynt.github.io/Content/3DTANK.html" target="_blank">Tanki Onilne</a><i>2025-02-08</i></div>
 		</div>
 		<footer>I'm in classroom 707,Zone 2,C.U.C.N.</footer>
 		<div class="bkc"></div>
