@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>太阳系模型</title>
+		<title>Модель Солнечной системы</title>
 		<style>
 			body {
+				cursor: none;
 				margin: 0px;
 				height: 100vh;
 				background-image: linear-gradient(to right top, rgb(20, 10, 10), rgb(20, 20, 0), rgb(5, 5, 30));
@@ -18,8 +19,7 @@
 				position: absolute;
 				height: 100vh;
 				width: 100vw;
-				background-image: radial-gradient(white 0px, transparent 3px),
-					radial-gradient(white 1px, transparent 0px);
+				background-image: radial-gradient(white 0px, transparent 3px), radial-gradient(white 1px, transparent 0px);
 				background-size: 300px 300px;
 				background-position: 0 0, 150px 150px;
 			}
@@ -29,28 +29,35 @@
 				width: 300px;
 				background-color: gold;
 				border-radius: 50%;
-				box-shadow: 0 0 20px 5px gold;
+				animation: sun 4s infinite linear alternate;
+			}
+			@keyframes sun {
+				from {
+					box-shadow: 0 0 20px 6px gold;
+				}
+				to {
+					box-shadow: 0 0 15px 4px red;
+					filter: brightness(0.9);
+				}
 			}
 			.earth-orbit {
 				height: 600px;
 				width: 600px;
 				border-radius: 50%;
-				border: 2px dashed rgba(255, 255, 255, 0.05);
 				position: absolute;
-				animation: rotate 30s infinite linear;
+				animation: rotate 40s infinite linear;
 			}
 			.moon-orbit {
 				height: 80px;
 				width: 80px;
 				border-radius: 50%;
-				border: 2px dashed rgba(255, 255, 255, 0.05);
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				position: absolute;
 				left: 560px;
 				top: 260px;
-				animation: rotate 3s infinite linear;
+				animation: rotate 2s infinite linear;
 			}
 			.earth {
 				height: 40px;
