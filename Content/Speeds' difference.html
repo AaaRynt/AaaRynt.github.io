@@ -34,7 +34,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				cursor: not-allowed;
+				cursor: n-resize;
 			}
 			.left {
 				background-color: gold;
@@ -122,10 +122,17 @@
 				transform: translate(-50%);
 			}
 			a {
+				margin-left: 10px;
+				margin-right: 10px;
 				text-decoration: none;
 				color: rgb(77, 182, 176);
 				text-shadow: 0 0 3px rgba(34, 200, 247, 0.8);
 				cursor: help;
+				transition: 0.2s;
+			}
+			a:hover {
+				text-decoration: underline;
+				text-shadow: 0 0 10px rgba(34, 200, 247, 0.8), 0 0 3px rgba(34, 200, 247, 0.8);
 			}
 			hr {
 				position: relative;
@@ -148,21 +155,26 @@
 			<span><input type="number" placeholder="Duration" min="0" step="0.01" /></span>
 			<button>MOVE</button>
 		</div>
-
-		<footer><a href="https://cubic-bezier.com/" target="_blank">cubic-bezier</a></footer>
+		<footer><a href="https://cubic-bezier.com/" target="_blank">cubic-bezier</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/easing-function" target="_blank">&lt;easing-function&gt;</a></footer>
 		<script type="module">
 			const input = document.querySelector("input");
 			const btn = document.querySelector("button");
 			const rects = document.querySelectorAll(".rect");
 			const time = document.querySelector("#time");
+			const speeds = ["ease", "ease-in-out", "ease-in", "ease-out", "linear"];
 			let Interval;
 			let sec = 0;
 			let ms = 0;
 			let is_left = true;
 			rects.forEach((rect, i) => {
+				rect.textContent = speeds[i];
 				rect.style.top = 110 * i + "px";
 				rect.style.left = "4px";
 				rect.classList.add("left");
+				let a = i;
+				rect.addEventListener("click", () => {
+					rect.textContent = speeds[a < 4 ? ++a : (a = 0)];
+				});
 			});
 			input.addEventListener("change", () => {
 				sec = Math.floor(input.value);
