@@ -16,6 +16,7 @@
 			}
 			* {
 				font-family: "Aldrich", sans-serif;
+				user-select: none;
 			}
 			body {
 				height: 100vh;
@@ -46,6 +47,7 @@
 				color: gold;
 			}
 			#time {
+				transform: scaleX(1.5);
 				color: transparent;
 				font-weight: 900;
 				font-size: 40px;
@@ -79,7 +81,7 @@
 				content: "(sec)";
 				opacity: 0.4;
 				position: absolute;
-				transform: translate(-60px, 8px);
+				transform: translate(-62px, 8px);
 			}
 			button {
 				all: unset;
@@ -122,6 +124,7 @@
 				transform: translate(-50%);
 			}
 			a {
+				user-select: all;
 				margin-left: 10px;
 				margin-right: 10px;
 				text-decoration: none;
