@@ -3,28 +3,55 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Home page</title>
+		<title></title>
 		<link rel="icon" href="Static/Image/61.ico" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&family=Press+Start+2P&family=Aldrich&display=swap" rel="stylesheet" />
 	</head>
+
 	<style>
+		::-webkit-scrollbar {
+			width: 8px;
+		}
+		::-webkit-scrollbar-track {
+			background: rgba(171, 178, 191, 0.5);
+			border-radius: 50px;
+		}
+		::-webkit-scrollbar-thumb {
+			background: rgba(40, 44, 52, 0.5);
+			border-radius: 10px;
+			border: 1px dotted rgba(171, 178, 191, 0.5);
+		}
+		::-webkit-scrollbar-thumb:hover {
+			background: rgba(40, 44, 52, 0.9);
+		}
+		:root {
+			--content: "_";
+		}
 		* {
 			font-family: "Aldrich", sans-serif;
 			transition: 0.3s;
-		}
-		body {
-			font-size: 20px;
 			font-weight: 200;
 			font-style: normal;
+			color: rgb(171, 178, 191);
+		}
+		#time,
+		h1,
+		#introduce,
+		footer {
+			opacity: 0.8;
+		}
+		body {
+			height: 100vh;
 			z-index: 1;
 			margin: 0px;
 			padding: 0px;
-			color: rgb(171, 178, 191);
-			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 		}
-		.bkc {
+		#bkc {
 			z-index: -1;
 			position: fixed;
 			top: 50%;
@@ -45,59 +72,76 @@
 				transform: translate(-50%, -50%) rotate(360deg);
 			}
 		}
-		h1,
-		#time,
-		#introduce,
-		#nav,
-		footer,
-		a,
-		i,
-		span {
-			position: absolute;
-			opacity: 0.8;
+		nav {
+			width: 100%;
+		}
+		main {
+			overflow-y: auto;
+			overflow-x: hidden;
+			width: 80%;
+			padding: 1.2%;
+			flex-grow: 1;
+			display: flex;
+			justify-content: space-evenly;
+			flex-direction: column;
+			gap: 4px;
+		}
+		footer {
+			margin: 1%;
+			width: 100%;
+			text-align: center;
 		}
 		#time {
+			user-select: all;
+			color: rgb(77, 182, 176);
+			text-shadow: 0 0 3px rgba(34, 200, 247, 0.8);
 			cursor: wait;
 			font-family: "Press Start 2P", system-ui;
-			font-weight: 100;
-			top: 2%;
-			right: 2%;
+			position: absolute;
+			top: 1%;
+			right: 1%;
 		}
 		h1 {
-			left: 50%;
-			top: -3%;
-			transform: translate(-50%, 0);
+			cursor: not-allowed;
+			color: transparent;
+			-webkit-text-stroke: 1px rgb(171, 178, 191);
+			opacity: 0;
+			transition: 4s;
+			margin: 1%;
+			font-size: 40px;
+			font-weight: 100;
+			text-align: center;
 		}
 		#introduce {
-			left: 50%;
-			top: 5%;
-			transform: translate(-50%, 0);
+			margin: 1% 11%;
 		}
-		#nav {
-			width: 90%;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+		#introduce::after {
+			content: var(--content);
+			color: rgb(82, 139, 255);
 		}
 		.link {
 			cursor: pointer;
 			height: 50px;
-			width: 100%;
-			margin-top: 8px;
 			position: relative;
-			background-color: rgb(40, 44, 52);
-			border-radius: 10px;
+			background-color: rgba(40, 44, 52, 0.6);
+			border-radius: 12px;
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
 		}
 		.link:hover {
-			background-color: rgba(100, 50, 250, 0.8);
-			box-shadow: 0 4px 10px rgba(150, 100, 255, 0.3);
+			background-color: rgba(100, 100, 250, 0.6);
+			box-shadow: 0 4px 10px rgba(100, 100, 250, 0.4);
 			transform: scale(1.025) translate(0, -4px);
 		}
 		.link:hover a {
 			transform: scaleX(1.2);
 			text-shadow: 0 0 3px rgba(0, 255, 0, 0.8), 0 0 5px rgba(0, 255, 0, 1), 0 0 10px rgba(0, 255, 0, 0.6);
+		}
+		.link:hover .date {
+			text-decoration: underline;
+			color: white;
+			text-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
 		}
 		.link:active {
 			background-color: rgb(200, 100, 250);
@@ -105,7 +149,7 @@
 			transform: scale(0.975) translate(0, 2px);
 		}
 		a {
-			left: 5%;
+			margin: 4%;
 			text-decoration: none;
 			opacity: 1;
 			color: rgba(0, 255, 0, 0.4);
@@ -117,15 +161,10 @@
 		a:hover {
 			filter: brightness(1.5);
 		}
-		i {
+		.date {
+			margin: 4%;
 			cursor: progress;
 			font-family: "WDXL Lubrifont SC", sans-serif;
-			right: 5%;
-		}
-		footer {
-			bottom: 2px;
-			left: 50%;
-			transform: translate(-50%, 0);
 		}
 		span {
 			cursor: copy;
@@ -136,31 +175,70 @@
 			background-clip: text;
 		}
 	</style>
+
 	<body>
-		<h1>Welcome!</h1>
+		<div id="bkc"></div>
 		<time id="time">00:00:00</time>
-		<div id="introduce"></div>
-		<div id="nav">
-			<div class="link"><a href="https://aaarynt.github.io/Content/Speeds'%20difference.html" target="_blank">Speeds' difference</a><i>2025-09-06</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/Emojis.html" target="_blank">🌈Emojis✨</a><i>2025-08-16</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/15 puzzle.html" target="_blank">15 puzzle</a><i>2025-07-18</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/Canvas.html" target="_blank">Canvas</a><i>2025-06-21</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/CRUD.html" target="_blank">Create,Read,Update,Delete</a><i>2025-06-19</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/Pac%20man.html" target="_blank">Pac man</a><i>2025-06-15</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/Solar%20System.html" target="_blank">Solar System</a><i>2025-05-08</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/Chameleon.html" target="_blank">Chameleon</a><i>2025-04-14</i></div>
-			<div class="link"><a href="https://aaarynt.github.io/Content/3DTANK.html" target="_blank">Tanki Onilne</a><i>2025-02-08</i></div>
-		</div>
+
+		<nav>
+			<h1>Hello World!</h1>
+			<div id="introduce"></div>
+		</nav>
+
+		<main>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Content/Speeds'%20difference.html" target="_blank">Speeds' difference</a>
+				<div class="date">2025-09-06</div>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Content/Emojis.html" target="_blank">🌈Emojis✨</a>
+				<div class="date">2025-08-16</div>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Content/15 puzzle.html" target="_blank">15 puzzle</a>
+				<div class="date">2025-07-18</div>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Content/Canvas.html" target="_blank">Canvas</a>
+				<div class="date">2025-06-21</div>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Content/CRUD.html" target="_blank">Create,Read,Update,Delete</a>
+				<div class="date">2025-06-19</div>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Content/Pac%20man.html" target="_blank">Pac man</a>
+				<div class="date">2025-06-15</div>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Content/Solar%20System.html" target="_blank">Solar System</a>
+				<div class="date">2025-05-08</div>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Content/Chameleon.html" target="_blank">Chameleon</a>
+				<div class="date">2025-04-14</div>
+			</div>
+			<div class="link">
+				<a href="https://aaarynt.github.io/Content/3DTANK.html" target="_blank">Tanki Onilne</a>
+				<div class="date">2025-02-08</div>
+			</div>
+		</main>
 
 		<footer>I'm in classroom 707,Zone 2,<span>CUCN</span></footer>
-		<div class="bkc"></div>
+
 		<audio src="Static/Sound/over.mp3" id="over"></audio>
 		<audio src="Static/Sound/click.wav" id="click"></audio>
+		<audio src="Static/Sound/TFR_mu_tfr_tears_of_aquilon.ogg" id="audio1"></audio>
+		<audio src="Static/Sound/TFR_mu_tfr_isolation.ogg" id="audio2"></audio>
+
 		<script>
 			const over = document.querySelector("#over"),
-				click = document.querySelector("#click");
-			updateTime();
-			setInterval(updateTime, 1000);
+				click = document.querySelector("#click"),
+				audio1 = document.querySelector("#audio1"),
+				audio2 = document.querySelector("#audio2"),
+				text = "Time passes, code remains.Every single commit is a little trace of my youth — together they form the changelog of my growth.",
+				introduce = document.querySelector("#introduce");
+			let index = 0;
 			function updateTime() {
 				const now = new Date();
 				const seconds = now.getSeconds();
@@ -168,14 +246,27 @@
 				const hours = now.getHours();
 				document.querySelector("#time").innerHTML = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 			}
-			const text = "Hello, this is my homepage!Here are my front-end projects:";
-			let index = 0;
+
+			setInterval(updateTime, 1000);
 			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelector("h1").style.opacity = 1;
+				updateTime();
 				setInterval(() => {
 					if (index < text.length) {
-						document.querySelector("#introduce").innerHTML += text[index++];
+						introduce.textContent += text[index++];
+					} else {
+						introduce.style.setProperty("--content", '""');
 					}
-				}, 80);
+				}, 50);
+			});
+			document.addEventListener("click", () => {
+				audio1.play();
+			});
+			audio1.addEventListener("ended", () => {
+				audio2.play();
+			});
+			audio2.addEventListener("ended", () => {
+				audio1.play();
 			});
 			document.querySelectorAll(".link").forEach(i => {
 				i.addEventListener("click", () => {
