@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title></title>
-		<link rel="icon" href="Static/Image/61.ico" />
+		<link rel="icon" href="https://aaarynt.github.io/Static/Image/61.ico" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&family=Press+Start+2P&family=Aldrich&display=swap" rel="stylesheet" />
@@ -228,7 +228,16 @@
 		<audio src="https://aaarynt.github.io/Static/Sound/TFR_mu_tfr_tears_of_aquilon.ogg" id="audio1"></audio>
 		<audio src="https://aaarynt.github.io/Static/Sound/TFR_mu_tfr_isolation.ogg" id="audio2"></audio>
 
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBVDLF0RZ6"></script>
 		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			// 替换成你的测量 ID
+			gtag("config", "G-DBVDLF0RZ6");
 			const over = document.querySelector("#over"),
 				click = document.querySelector("#click"),
 				audio1 = document.querySelector("#audio1"),
