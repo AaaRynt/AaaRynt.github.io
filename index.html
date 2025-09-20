@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title></title>
+		<title>RynT's homepage</title>
 		<link rel="icon" href="https://aaarynt.github.io/Static/Image/61.ico" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&family=Press+Start+2P&family=Aldrich&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+SC&family=VT323&family=Aldrich&display=swap" rel="stylesheet" />
 	</head>
 
 	<style>
@@ -84,7 +84,6 @@
 			display: flex;
 			justify-content: space-evenly;
 			flex-direction: column;
-			gap: 4px;
 		}
 		footer {
 			margin: 1%;
@@ -96,7 +95,8 @@
 			color: rgb(77, 182, 176);
 			text-shadow: 0 0 3px rgba(34, 200, 247, 0.8);
 			cursor: wait;
-			font-family: "Press Start 2P", system-ui;
+			font-size: 24px;
+			font-family: "VT323", monospace;
 			position: absolute;
 			top: 1%;
 			right: 1%;
@@ -106,7 +106,7 @@
 			color: transparent;
 			-webkit-text-stroke: 1px rgb(171, 178, 191);
 			opacity: 0;
-			transition: 4s;
+			transition: 5s ease;
 			margin: 1%;
 			font-size: 40px;
 			font-weight: 100;
@@ -167,7 +167,7 @@
 			cursor: copy;
 			color: transparent;
 			font-weight: 900;
-			background: linear-gradient(100deg, #ff0000, #ffa500, #ffff00, #008000, #00ff, #800080);
+			background: linear-gradient(105deg, #ff0000, #ffa500, #ffff00, #008000, #00ff, #800080);
 			-webkit-background-clip: text;
 			background-clip: text;
 		}
@@ -221,7 +221,7 @@
 			</div>
 		</main>
 
-		<footer>I'm in classroom 707,Zone 2,<span>CUCN</span></footer>
+		<footer>I'm in classroom 707,Zone II,<span>CUCN</span></footer>
 
 		<audio src="https://aaarynt.github.io/Static/Sound/over.mp3" id="over"></audio>
 		<audio src="https://aaarynt.github.io/Static/Sound/click.wav" id="click"></audio>
@@ -263,7 +263,7 @@
 					} else {
 						introduce.style.setProperty("--content", '""');
 					}
-				}, 50);
+				}, 80);
 			});
 			document.addEventListener("click", () => {
 				audio1.play();
