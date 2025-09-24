@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Micro+5&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="CSS/Snake.css">
+		<title>Snake</title>
+	</head>
+	<body>
+		<div id="table">
+			<div id="time">
+				<span id="h">00</span>
+				<span class="colon">:</span>
+				<span id="m">00</span>
+				<span class="colon">:</span>
+				<span id="s">00</span>
+			</div>
+			<div id="score">0</div>
+		</div>
+
+		<div id="width">
+			<div id="num1">10</div>
+			<div id="num2">300</div>
+		</div>
+		<div id="container"></div>
+		<div id="control3">
+			<input type="range" min="3" max="50" step="1" value="20" id="size" />
+			<input type="range" min="50" max="1000" step="50" value="300" id="interval" />
+		</div>
+
+		<div id="control1">
+			<button id="up">▲</button>
+			<button id="right">▶</button>
+			<button id="down">▼</button>
+			<button id="left">◀</button>
+		</div>
+		<div id="control2">
+			<button id="audio">🔊</button>
+			<button id="pause">⏸</button>
+			<button id="restart">▇</button>
+			<button id="line">+</button>
+		</div>
+		<footer>
+			<span>N</span>
+			<span>P</span>
+			<span>R</span>
+			<span>M</span>
+		</footer>
+		<audio src="../Static/Sound/click1.mp3" id="click"></audio>
+		<audio src="../Static/Sound/eat.mp3" id="eat"></audio>
+		<audio src="../Static/Sound/game_over.mp3" id="game_over"></audio>
+		<script type="module" src="JavaScript/Snake.js">
+			
+		</script>
+	</body>
+</html>
