@@ -43,9 +43,9 @@ function updateLength() {
 	document.documentElement.style.setProperty("--ratio", `${size}px`);
 	const children = document.getElementById("control1").children;
 	for (let child of children) {
-		child.style.width = `${size * 0.15}px`;
-		child.style.height = `${size * 0.15}px`;
-		child.style.fontSize = `${size * 0.08}px`;
+		child.style.width = `${size * 0.18}px`;
+		child.style.height = `${size * 0.18}px`;
+		child.style.fontSize = `${size * 0.1}px`;
 	}
 }
 function updateTime() {
