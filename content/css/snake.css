@@ -81,11 +81,6 @@ body {
 	grid-template-columns: repeat(var(--length), 1fr);
 	grid-template-rows: repeat(var(--length), 1fr);
 }
-.box {
-	box-sizing: border-box;
-	border-right: 1px solid var(--c);
-	border-bottom: 1px solid var(--c);
-}
 footer {
 	font-size: 1.5em;
 }
