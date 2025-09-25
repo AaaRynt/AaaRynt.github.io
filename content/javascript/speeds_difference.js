@@ -1,3 +1,11 @@
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+	dataLayer.push(arguments);
+}
+gtag("js", new Date());
+gtag("config", "G-DBVDLF0RZ6");
+
+
 const input = document.querySelector("input");
 const btn = document.querySelector("button");
 const rects = document.querySelectorAll(".rect");

@@ -2,7 +2,7 @@
 	--bcg: #282c34;
 	--c: #abb2bf;
 	--ratio: 70%;
-	--length: 20;
+	--length: 10;
 }
 * {
 	font-family: "Micro 5", Aldrich, Arial, sans-serif;
@@ -91,7 +91,7 @@ footer {
 }
 #control1 {
 	position: absolute;
-	right: 4%;
+	right: 2%;
 	bottom: 4%;
 	display: grid;
 	grid-template:
