@@ -20,7 +20,6 @@ const container = document.querySelector("#container"),
 	audio = document.querySelector("#audio"),
 	pause = document.querySelector("#pause"),
 	restart = document.querySelector("#restart"),
-	line = document.querySelector("#line"),
 	click = document.querySelector("#click"),
 	eat = document.querySelector("#eat"),
 	game_over = document.querySelector("#game_over");
@@ -66,8 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	setInterval(updateTime, 1000);
 	updateLength();
 	createBox();
-	alert("Use 'W','A','S','D','↑','→','↓','←' to move!");
-	console.log("Use 'W','A','S','D','↑','→','↓','←' to move!");
+	alert("Press 'W','A','S','D','↑','→','↓','←' to move!");
+	console.log("Press 'W','A','S','D','↑','→','↓','←' to move!");
 });
 window.addEventListener("resize", updateLength);
 input1.addEventListener("change", () => {
@@ -87,15 +86,22 @@ function createBox() {
 	num1.textContent = size;
 	num2.textContent = input2.value;
 	num2.style.color = `hsl(${(input2.value * 12) / 95 - 1200 / 95},100%,50%)`;
-	for (let i = 0; i < size * size; i++) {
-		const div = document.createElement("div");
-		div.classList.add("box");
-		container.appendChild(div);
-		if (!((i + 1) % size)) {
-			div.style.borderRight = "none";
-		}
-		if (i >= size * size - size) {
-			div.style.borderBottom = "none";
+	for (let y = 0; y < size; y++) {
+		for (let x = 0; x < size; x++) {
+			const div = document.createElement("div");
+			div.classList.add("box");
+			if ((x + y) % 2 === 0) {
+				div.style.backgroundColor = "rgba(171,181,191,0.1)";
+			} else {
+				div.style.backgroundColor = "";
+			}
+			container.appendChild(div);
+			if (x === size - 1) {
+				div.style.borderRight = "none";
+			}
+			if (y === size - 1) {
+				div.style.borderBottom = "none";
+			}
 		}
 	}
 	boxes = document.querySelectorAll(".box");
@@ -127,7 +133,9 @@ function spawnFood() {
 }
 
 function draw() {
-	boxes.forEach(b => (b.style.background = ""));
+	boxes.forEach((box, i) => {
+		box.style.background = (Math.floor(i / size) + (i % size)) % 2 === 0 ? "rgba(171,181,191,0.1)" : "";
+	});
 
 	snake.forEach((seg, i, arr) => {
 		if (i === 0) boxes[index(seg.x, seg.y)].style.background = "lime";
@@ -203,10 +211,6 @@ document.addEventListener("keydown", e => {
 		case "Enter":
 			restart.click();
 			break;
-		case "n":
-		case "N":
-			line.click();
-			break;
 	}
 });
 document.addEventListener("keyup", () => {
@@ -273,10 +277,4 @@ pause.addEventListener("click", () => {
 			pause.classList.add("active");
 		}, 100);
 	}
-});
-line.addEventListener("click", () => {
-	clicked(line);
-	boxes.forEach(box => {
-		box.classList.toggle("box");
-	});
 });
