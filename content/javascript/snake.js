@@ -27,10 +27,18 @@ let boxes,
 	is_click = false;
 
 function updateLength() {
+	let size;
 	if (window.innerWidth >= window.innerHeight) {
-		document.documentElement.style.setProperty("--ratio", `${window.innerHeight * 0.8}px`);
+		size = window.innerHeight * 0.7;
 	} else {
-		document.documentElement.style.setProperty("--ratio", `${window.innerWidth * 0.8}px`);
+		size = window.innerWidth * 0.7;
+	}
+	document.documentElement.style.setProperty("--ratio", `${size}px`);
+	const children = document.getElementById("control1").children;
+	for (let child of children) {
+		child.style.width = `${size * 0.15}px`;
+		child.style.height = `${size * 0.15}px`;
+		child.style.fontSize = `${size * 0.08}px`;
 	}
 }
 function updateTime() {
@@ -172,8 +180,8 @@ document.addEventListener("keydown", e => {
 		case "A":
 			left.click();
 			break;
-		case "n":
-		case "N":
+		case "m":
+		case "M":
 			audio.click();
 			break;
 		case "p":
@@ -187,8 +195,8 @@ document.addEventListener("keydown", e => {
 		case "Enter":
 			restart.click();
 			break;
-		case "m":
-		case "M":
+		case "n":
+		case "N":
 			line.click();
 			break;
 	}
