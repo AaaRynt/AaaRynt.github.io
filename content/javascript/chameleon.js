@@ -1,3 +1,11 @@
+// https://analytics.google.com/analytics/web/
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+	dataLayer.push(arguments);
+}
+gtag("js", new Date());
+gtag("config", "G-DBVDLF0RZ6");
+
 document.addEventListener("DOMContentLoaded", () => {
 	alert("这个网页间隔一段时间会改变背景颜色，请自定义间隔时间");
 	const container = document.querySelector(".container"),
