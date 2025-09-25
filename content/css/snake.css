@@ -115,8 +115,8 @@ button {
 	background: var(--bcg);
 	color: var(--c);
 	font-size: 2em;
-	height: 80px;
-	width: 80px;
+	height: 100px;
+	width: 100px;
 	border-radius: 50%;
 	box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px, rgba(255, 255, 255, 0.4) 0px 2px 4px inset, rgba(0, 0, 0, 0.6) 0px -2px 4px inset;
 	cursor: pointer;
@@ -165,3 +165,4 @@ footer {
 	display: flex;
 	gap: 50px;
 }
+
