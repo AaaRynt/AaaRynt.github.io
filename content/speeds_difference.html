@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Share+Tech&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="css/speeds_difference.css" />
+		<title>Speeds' difference</title>
+	</head>
+	<body>
+		<div class="rect">linear</div>
+		<div class="rect">ease</div>
+		<div class="rect">ease-in</div>
+		<div class="rect">ease-out</div>
+		<div class="rect">ease-in-out</div>
+		<hr />
+		<div id="control">
+			<div id="time">00 : 00</div>
+			<span><input type="number" placeholder="Duration" min="0" step="0.01" /></span>
+			<button>MOVE</button>
+		</div>
+		<footer><a href="https://cubic-bezier.com/" target="_blank">cubic-bezier</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/easing-function" target="_blank">&lt;easing-function&gt;</a></footer>
+		<script src="javascript/speeds_difference.js"></script>
+	</body>
+</html>
