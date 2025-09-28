@@ -28,6 +28,7 @@ let boxes,
 	snake,
 	direction,
 	food,
+	food_temp,
 	timer,
 	muted = false,
 	is_paused = false,
@@ -128,8 +129,9 @@ function spawnFood() {
 	do {
 		x = Math.floor(Math.random() * size);
 		y = Math.floor(Math.random() * size);
-	} while (snake.some(seg => seg.x === x && seg.y === y));
+	} while (snake.some(seg => (seg.x === x && seg.y === y) || (food_temp.x === x && food_temp.y === y)));
 	food = { x, y };
+	food_temp = food;
 }
 
 function draw() {
