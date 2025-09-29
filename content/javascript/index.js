@@ -13,22 +13,7 @@ const text = "Time passes,code remains.Each commit is a stroke on the canvas of 
 	audio2 = document.querySelector("#audio2"),
 	introduce = document.querySelector("#introduce");
 let index = 0;
-function updateTime() {
-	const now = new Date();
-	const seconds = now.getSeconds().toString().padStart(2, "0");
-	const minutes = now.getMinutes().toString().padStart(2, "0");
-	const hours = now.getHours().toString().padStart(2, "0");
 
-	document.querySelector("#h").textContent = hours;
-	document.querySelector("#m").textContent = minutes;
-	document.querySelector("#s").textContent = seconds;
-
-	document.querySelectorAll(".colon").forEach(span => {
-		span.classList.toggle("off");
-	});
-}
-
-setInterval(updateTime, 1000);
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelector("h1").style.opacity = 1;
 	updateTime();

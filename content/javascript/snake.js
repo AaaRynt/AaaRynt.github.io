@@ -49,21 +49,7 @@ function updateLength() {
 		child.style.fontSize = `${size * 0.1}px`;
 	}
 }
-function updateTime() {
-	const now = new Date();
-	const s = now.getSeconds().toString().padStart(2, "0");
-	const m = now.getMinutes().toString().padStart(2, "0");
-	const h = now.getHours().toString().padStart(2, "0");
-	document.querySelector("#h").textContent = h;
-	document.querySelector("#m").textContent = m;
-	document.querySelector("#s").textContent = s;
-	document.querySelectorAll(".colon").forEach(span => {
-		span.classList.toggle("off");
-	});
-}
 document.addEventListener("DOMContentLoaded", () => {
-	updateTime();
-	setInterval(updateTime, 1000);
 	updateLength();
 	createBox();
 	alert("Press 'W','A','S','D','↑','→','↓','←' to move!");

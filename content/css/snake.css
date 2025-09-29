@@ -51,7 +51,7 @@ body {
 	font-size: 2em;
 	text-align: end;
 }
-#time {
+time {
 	display: flex;
 	text-align: center;
 }
@@ -61,7 +61,7 @@ body {
 #s {
 	width: 0.8em;
 }
-#time > .colon {
+time > .colon {
 	transition: 0.3s;
 	width: 0.3em;
 }
