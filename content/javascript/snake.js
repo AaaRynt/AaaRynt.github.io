@@ -68,7 +68,7 @@ input2.addEventListener("change", () => {
 });
 function createBox() {
 	container.innerHTML = "";
-	size = getComputedStyle(document.documentElement).getPropertyValue("--length");
+	size = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--length"));
 	num1.style.color = `hsl(${6000 / 47 - (size * 120) / 47},100%,50%)`;
 	num1.textContent = size;
 	num2.textContent = input2.value;
@@ -115,7 +115,7 @@ function spawnFood() {
 	do {
 		x = Math.floor(Math.random() * size);
 		y = Math.floor(Math.random() * size);
-	} while (snake.some(seg => (seg.x === x && seg.y === y) || (food_temp.x === x && food_temp.y === y)));
+	} while (snake.some(seg => (seg.x === x && seg.y === y) || (food_temp && food_temp.x === x && food_temp.y === y)));
 	food = { x, y };
 	food_temp = food;
 }
