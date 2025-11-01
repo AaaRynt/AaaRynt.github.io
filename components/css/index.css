@@ -81,16 +81,17 @@ time {
 	position: absolute;
 	top: 1%;
 	right: 1%;
-	display: flex;
+	display: inline-flex;
 	text-align: center;
-}
-time > * {
-	transition: 0.2s;
 	color: rgb(77, 182, 176);
 	text-shadow: 0 0 3px rgba(34, 200, 247, 0.8);
 	cursor: wait;
 	font-size: 1.5em;
 	font-family: "VT323", monospace;
+}
+.colon {
+	text-shadow: 0 0 5px currentColor;
+	transition: 0.1s linear;
 }
 h1 {
 	cursor: not-allowed;

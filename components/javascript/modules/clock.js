@@ -1,17 +1,18 @@
 // time {
 //     font-family: VT323;
-// 	display: flex;
+// 	   display: inline-flex;
 // }
-// time *{
+// .colon{
+//     text-shadow: 0 0 2px currentColor;
 //     transition: 0.1s linear;
 // }
-// 	<time>
-// 		<span id="h">00</span>
-// 		<span class="colon">:</span>
-// 		<span id="m">00</span>
-// 		<span class="colon">:</span>
-// 		<span id="s">00</span>
-//	</time>
+// <time>
+//     <span id="h">00</span>
+//     <span class="colon">:</span>
+//     <span id="m">00</span>
+//     <span class="colon">:</span>
+//     <span id="s">00</span>
+// </time>
 
 let off = true;
 const colons = document.querySelectorAll(".colon");
@@ -30,7 +31,7 @@ function updateTime() {
 	document.querySelector("#s").textContent = seconds;
 
 	colons.forEach(span => {
-		span.style.opacity = off ? "0.1" : "1";
+		span.style.opacity = off ? "0.1" : "0.9";
 	});
 	off = !off;
 }

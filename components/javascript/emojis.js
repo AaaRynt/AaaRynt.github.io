@@ -6,20 +6,20 @@ function gtag() {
 gtag("js", new Date());
 gtag("config", "G-DBVDLF0RZ6");
 
-const emojis = ["😀", "😃", "😄", "😁", "😆", "😅", "🤣", "😂", "🙂", "🙃", "🫠", "😉", "😊", "😇", "🥰", "😍", "🤩", "😘", "😗", "☺️", "😚", "😙", "🥲", "😋", "😛", "😜", "🤪", "😝", "🤑", "🤗", "🤭", "🫢", "🫣", "🤫", "🤔", "🫡", "🤐", "🤨", "😐", "😑", "😶", "🫥", "😶‍🌫️", "😏", "😒", "🙄", "😬", "😮‍💨", "🤥", "🫨", "🙂‍↔️", "🙂‍↕️", "😌", "😔", "😪", "🤤", "😴", "😷", "🤒", "🤕", "🤢", "🤮", "🤧", "🥵", "🥶", "🥴", "😵", "😵‍💫", "🤯", "🤠", "🥳", "🥸", "😎", "🤓", "🧐", "😕", "🫤", "😟", "🙁", "☹️", "😮", "😯", "😲", "😳", "🥺", "🥹", "😦", "😧", "😨", "😰", "😥", "😢", "😭", "😱", "😖", "😣", "😞", "😓", "😩", "😫", "🥱", "😤", "😡", "😠", "🤬", "😈", "👿", "💀", "☠️", "💩", "🤡", "👹", "👺", "👻", "👽", "👾", "🤖", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾", "🙈", "🙉", "🙊", "🐵", "🐶", "🐺", "🦊", "🦝", "🦁", "🐯", "🐴", "🫎", "🦄", "🐮", "🐷", "🐗", "🐭", "🐹", "🐰", "🐻", "🐻‍❄️", "🐨", "🐼", "🐔", "🐸", "🐲", "🌚", "🌛", "🌜", "🌝", "🌞","🎃","🌬️",];
+import { emojis } from "../../assets/json/emojis.js";
 
 console.log("Keydown '-','Backspace','Delete' or '+' to change the numbers of the emojis! ");
-function randomarr(arr) {
+function randomArr(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
-function randomnum() {
+function randomNum() {
 	return Math.random() * 2 + 0.5;
 }
 function move(div) {
-	div.textContent = randomarr(emojis);
+	div.textContent = randomArr(emojis);
 	const maxLeft = window.innerWidth - div.offsetWidth;
 	const maxTop = window.innerHeight - div.offsetHeight;
-	div.style.transition = `left ${randomnum()}s, top ${randomnum()}s, transform ${randomnum()}s`;
+	div.style.transition = `left ${randomNum()}s, top ${randomNum()}s, transform ${randomNum()}s`;
 	div.style.left = Math.random() * maxLeft + "px";
 	div.style.top = Math.random() * maxTop + "px";
 	div.style.transform = `scale(${Math.random() + 0.5})`;
