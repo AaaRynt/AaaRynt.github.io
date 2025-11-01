@@ -27,7 +27,6 @@ header,
 main,
 footer {
 	width: 100%;
-	outline: solid;
 	position: relative;
 	display: flex;
 	justify-content: center;
@@ -101,9 +100,8 @@ a:hover {
 	width: 100%;
 	padding: 4px;
 	aspect-ratio: 12 / 3;
-	border: 1px solid;
 	display: grid;
-	gap: 4px;
+	gap: 6px;
 	grid-template-columns: repeat(12, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 }
