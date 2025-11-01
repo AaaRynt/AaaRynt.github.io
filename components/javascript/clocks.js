@@ -66,7 +66,7 @@ function change() {
 			s2 = now.getSeconds() % 10;
 
 		console.log(`${h1}${h2}:${m1}${m2}:${s1}${s2}`);
-		
+
 		// const digits = [h1, h2, m1, m2, s1, s2];
 		// for (let i = 0; i < digits.length; i++) {
 		// 	for (let j = 0; j < 3; j++) {
