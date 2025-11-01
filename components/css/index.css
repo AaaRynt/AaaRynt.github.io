@@ -87,7 +87,7 @@ time {
 	text-shadow: 0 0 3px rgba(34, 200, 247, 0.8);
 	cursor: wait;
 	font-size: 1.5em;
-	font-family: "VT323", monospace;
+	font-family: "VT323", monospace !important;
 }
 .colon {
 	text-shadow: 0 0 5px currentColor;
