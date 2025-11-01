@@ -121,7 +121,7 @@ a:hover {
 	transform-origin: left center;
 	transform: translateY(-50%) rotate(135deg);
 	transition: 0.7s;
-    opacity: 0.8;
+	opacity: 0.9;
 }
 .dot {
 	height: 6%;
@@ -135,7 +135,7 @@ a:hover {
 	height: 5%;
 	width: 40%;
 	background-color: darkorange;
-    box-shadow: 0 0 4px orange;
+	box-shadow: 0 0 4px orange;
 	left: 50%;
 	top: 50%;
 }
