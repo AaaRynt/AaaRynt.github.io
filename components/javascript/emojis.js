@@ -6,7 +6,7 @@ function gtag() {
 gtag("js", new Date());
 gtag("config", "G-DBVDLF0RZ6");
 
-import emojis from "../../assets/json/face_emojis.json";
+import emojis from "../../assets/json/face_emojis.js";
 
 console.log("Keydown '-','Backspace','Delete' or '+' to change the numbers of the emojis! ");
 function randomArr(arr) {
