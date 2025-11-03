@@ -6,9 +6,8 @@ function gtag() {
 gtag("js", new Date());
 gtag("config", "G-DBVDLF0RZ6");
 
-import emojis from "../../assets/json/face_emojis.js";
+import { emojis } from "../../assets/json/face_emojis.js";
 
-console.log("Keydown '-','Backspace','Delete' or '+' to change the numbers of the emojis! ");
 function randomArr(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -24,21 +23,26 @@ function move(div) {
 	div.style.top = Math.random() * maxTop + "px";
 	div.style.transform = `scale(${Math.random() + 0.5})`;
 }
-setInterval(() => {
+
+document.addEventListener("DOMContentLoaded", () => {
+	console.log("Keydown '-','Backspace','Delete' or '+' to change the numbers of the emojis! ");
+
 	document.querySelectorAll(".emoji").forEach(div => move(div));
-}, 1500);
-document.querySelectorAll(".emoji").forEach(div => move(div));
-document.body.addEventListener("keydown", e => {
-	if (e.key === "+") {
-		const div = document.createElement("div");
-		div.classList.add("emoji");
-		document.body.appendChild(div);
-		move(div);
-	}
-	if (e.key === "-" || e.key === "Backspace" || e.key === "Delete") {
-		const divs = document.querySelectorAll(".emoji");
-		if (divs.length > 0) {
-			divs[divs.length - 1].remove();
+	setInterval(() => {
+		document.querySelectorAll(".emoji").forEach(div => move(div));
+	}, 1500);
+	document.body.addEventListener("keydown", e => {
+		if (e.key === "+") {
+			const div = document.createElement("div");
+			div.classList.add("emoji");
+			document.body.appendChild(div);
+			move(div);
 		}
-	}
+		if (e.key === "-" || e.key === "Backspace" || e.key === "Delete") {
+			const divs = document.querySelectorAll(".emoji");
+			if (divs.length > 0) {
+				divs[divs.length - 1].remove();
+			}
+		}
+	});
 });
