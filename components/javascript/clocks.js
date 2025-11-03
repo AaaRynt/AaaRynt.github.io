@@ -49,12 +49,12 @@ import { clock1, clock2 } from "../../assets/json/two_clocks.js";
 
 const longs = document.querySelectorAll(".long");
 const shorts = document.querySelectorAll(".short");
-let nums = clock2;
+let nums = clock1;
 
-document.querySelector("button").addEventListener("click", () => {
-	nums = nums === clock1 ? clock2 : clock1;
-	change();
-});
+// document.querySelector("button").addEventListener("click", () => {
+// 	nums = nums === clock1 ? clock2 : clock1;
+// 	change();
+// });
 function change() {
 	setInterval(() => {
 		const now = new Date(),

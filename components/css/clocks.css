@@ -61,30 +61,6 @@ time {
 .colon {
 	transition: 0.1s linear;
 }
-button {
-	all: unset;
-	border: 2px #282c34 double;
-	padding: 2px 5px;
-	cursor: pointer;
-	background-color: transparent;
-	font-family: "Comic Relief", Arial, sans-serif;
-	position: absolute;
-	bottom: 5%;
-}
-button {
-	all: unset;
-	border: 2px #282c34 double;
-	padding: 2px 5px;
-	cursor: pointer;
-	background-color: transparent;
-	font-family: "Comic Relief", Arial, sans-serif;
-	position: absolute;
-	bottom: 5%;
-	transition: 0.2s;
-}
-button:hover {
-	color: orangered;
-}
 a {
 	margin-left: 10px;
 	margin-right: 10px;
