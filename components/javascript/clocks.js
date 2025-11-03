@@ -6,7 +6,7 @@ function gtag() {
 gtag("js", new Date());
 gtag("config", "G-DBVDLF0RZ6");
 
-import { clock1, clock2 } from "../../assets/json/two_clocks.js";
+import { clock1 } from "../../assets/json/two_clocks.js";
 
 //background
 (() => {
