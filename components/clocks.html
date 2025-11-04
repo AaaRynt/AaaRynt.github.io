@@ -3,15 +3,28 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			components="
+		茫然地学习抽象的 `Vue.js`，难免让我怀念最初写前端的感觉；
+		当我看到别人的创意，旋即便付诸行动，
+		原生的JavaScript让我久违地找回了自信。
+		写下这一行行代码时，已然是子夜、大三上的期中。
+		假以时日，待我技术素养成熟后，
+		不论身处苏州还是上海，负责什么业务，待遇如何。
+		有没有用上期待的MacBook Air&iPhone、有恋人相伴……
+		都希望那份**热爱**，依然存在。"
+		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet" />
-		<title>Clock Made of Clocks</title>
 		<link rel="stylesheet" href="css/clocks.css" />
+		<title>Clock Made of Clocks</title>
 	</head>
 
 	<body>
 		<canvas></canvas>
+
 		<header>
 			<time>
 				<div id="digital">88:88:88</div>
@@ -23,7 +36,9 @@
 			</time>
 		</header>
 		<main>
-			<div id="container"></div>
+			<div class="container large"></div>
+			<div class="container small"></div>
+			<button>Change clocks</button>
 		</main>
 		<footer>
 			<a href="https://www.youtube.com/watch?v=VUSCH7nQGIM" target="_blank">Clock made of clocks</a>

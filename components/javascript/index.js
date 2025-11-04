@@ -5,18 +5,16 @@ function gtag() {
 }
 gtag("js", new Date());
 gtag("config", "G-DBVDLF0RZ6");
-
 const text = "Time passes,code remains.Each commit is a stroke on the canvas of my youth.Stay sober while striving for better answers.",
+	introduce = document.querySelector("#introduce"),
 	over = document.querySelector("#over"),
 	click = document.querySelector("#click"),
 	audio1 = document.querySelector("#audio1"),
-	audio2 = document.querySelector("#audio2"),
-	introduce = document.querySelector("#introduce");
+	audio2 = document.querySelector("#audio2");
 let index = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelector("h1").style.opacity = 1;
-	updateTime();
 	setInterval(() => {
 		if (index < text.length) {
 			introduce.textContent += text[index++];
