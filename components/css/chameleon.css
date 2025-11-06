@@ -1,71 +1,71 @@
 :root {
-	--time: 0.3s;
+    --time: 0.3s;
 }
 body {
-	background-color: rgb(40, 44, 52);
-	color: white;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
-	margin: 0;
-	overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(40, 44, 52);
+    color: white;
 }
 div,
 h1 {
-	box-shadow: none;
+    box-shadow: none;
 }
 button {
-	margin: 10px;
-	padding: 0px 5px;
-	font-size: 18px;
+    margin: 10px;
+    padding: 0px 5px;
+    font-size: 18px;
 }
 button:hover {
-	padding: 10px 5px;
-	background-color: black;
-	transition: 0.4s;
-	color: white;
-	cursor: help;
+    padding: 10px 5px;
+    transition: 0.4s;
+    background-color: black;
+    cursor: help;
+    color: white;
 }
 .stop:hover {
-	padding: 10px 5px;
-	background-color: red;
-	transition: 0.4s;
-	color: white;
-	cursor: no-drop;
+    padding: 10px 5px;
+    transition: 0.4s;
+    background-color: red;
+    cursor: no-drop;
+    color: white;
 }
 .container {
-	position: relative;
-	margin-top: 20px;
-	height: 50px;
-	width: 100px;
-	overflow: hidden;
+    position: relative;
+    overflow: hidden;
+    width: 100px;
+    height: 50px;
+    margin-top: 20px;
 }
 .num {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	font-size: 30px;
-	transition: all var(--time);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: all var(--time);
+    font-size: 30px;
 }
 .now {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	font-size: 30px;
-	transform: translate(-50%, -50%);
-	opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
 }
 .num.bottom {
-	transform: translate(-50%, 100%);
-	opacity: 0;
+    opacity: 0;
+    transform: translate(-50%, 100%);
 }
 .num.in {
-	transform: translate(-50%, -50%);
-	opacity: 1;
+    opacity: 1;
+    transform: translate(-50%, -50%);
 }
 .num.top {
-	transform: translate(-50%, -200%);
-	opacity: 0;
+    opacity: 0;
+    transform: translate(-50%, -200%);
 }
