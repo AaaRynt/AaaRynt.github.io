@@ -1,72 +1,72 @@
 body {
-	height: 100vh;
-	margin: 0px;
-	background: rgb(40, 44, 52);
-	color: rgb(171, 178, 191);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0px;
+    background: rgb(40, 44, 52);
+    color: rgb(171, 178, 191);
 }
 #control {
-	padding: 5px 10px 5px 30px;
-	margin: 10px;
-	font-size: 20px;
-	background-color: rgb(45, 49, 57);
-	width: 120px;
-	border-radius: 10px;
+    width: 120px;
+    margin: 10px;
+    padding: 5px 10px 5px 30px;
+    background-color: rgb(45, 49, 57);
+    border-radius: 10px;
+    font-size: 20px;
 }
 #container {
-	transition: 0.3s;
-	height: 480px;
-	width: 480px;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(4, 1fr);
-	gap: 10px;
-	border: 4px ridge wheat;
-	position: relative;
+    display: grid;
+    gap: 10px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+    width: 480px;
+    height: 480px;
+    transition: 0.3s;
+    border: 4px ridge wheat;
 }
 .tile {
-	position: absolute;
-	box-sizing: border-box;
-	user-select: none;
-	height: 120px;
-	width: 120px;
-	border: 2px solid;
-	border-color: black;
-	font-size: 50px;
-	font-weight: 600;
-	color: rgb(40, 44, 52);
-	display: none;
-	align-items: center;
-	justify-content: center;
-	transition: 0.4s;
+    user-select: none;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    box-sizing: border-box;
+    width: 120px;
+    height: 120px;
+    transition: 0.4s;
+    border: 2px solid;
+    border-color: black;
+    font-size: 50px;
+    font-weight: 600;
+    color: rgb(40, 44, 52);
 }
 #start {
-	all: unset;
-	text-align: center;
-	color: black;
-	background-color: skyblue;
-	margin: 20px;
-	height: 30px;
-	width: 80px;
-	box-shadow: rgba(50, 50, 50, 0.5) 0px 0px 10px;
-	border-radius: 8px;
-	cursor: pointer;
-	transition: all 0.2s;
+    all: unset;
+    box-shadow: rgba(50, 50, 50, 0.5) 0px 0px 10px;
+    width: 80px;
+    height: 30px;
+    margin: 20px;
+    transition: all 0.2s;
+    background-color: skyblue;
+    cursor: pointer;
+    border-radius: 8px;
+    color: black;
+    text-align: center;
 }
 #start:hover {
-	color: white;
-	transform: scale(1.1);
-	background-color: deepskyblue;
+    transform: scale(1.1);
+    background-color: deepskyblue;
+    color: white;
 }
 #start:active {
-	color: red;
-	transform: scale(0.9);
-	background-color: blue;
+    transform: scale(0.9);
+    background-color: blue;
+    color: red;
 }
 a {
-	position: absolute;
-	bottom: 2%;
+    position: absolute;
+    bottom: 2%;
 }
