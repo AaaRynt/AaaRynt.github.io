@@ -155,9 +155,9 @@ a {
 .date {
     margin: 4%;
     cursor: progress;
-    font-family: "WDXL Lubrifont SC", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
-#CUCN {
+abbr {
     -webkit-background-clip: text;
     background: linear-gradient(105deg, #ff0000, #ffa500, #ffff00, #008000, #00ff, #800080);
     background-clip: text;
