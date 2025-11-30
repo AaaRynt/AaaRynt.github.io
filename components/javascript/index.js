@@ -5,6 +5,7 @@ function gtag() {
 }
 gtag("js", new Date());
 gtag("config", "G-DBVDLF0RZ6");
+
 const text = "Time passes,code remains.Each commit is a stroke on the canvas of my youth.Stay sober while striving for better answers.",
 	introduce = document.querySelector("#introduce"),
 	over = document.querySelector("#over"),
