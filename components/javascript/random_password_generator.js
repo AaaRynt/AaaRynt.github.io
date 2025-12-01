@@ -9,7 +9,7 @@ gtag("config", "G-DBVDLF0RZ6");
 Vue.createApp({
 	data() {
 		return {
-			length: 6,
+			length: 11,
 			Lower: true,
 			Upper: true,
 			Num: true,
@@ -18,6 +18,7 @@ Vue.createApp({
 			timer: null,
 			audioCtx: null,
 			clickSound: null,
+			done: false,
 		};
 	},
 	mounted() {
@@ -26,34 +27,35 @@ Vue.createApp({
 	methods: {
 		playClick() {
 			const ctx = this.audioCtx;
-			// 生成一小段“颗粒噪声”
-			const duration = 0.05; // 50ms，短但有颗粒感
+
+			// 闪点持续时间：30ms
+			const duration = 0.03;
 			const buffer = ctx.createBuffer(1, ctx.sampleRate * duration, ctx.sampleRate);
 			const data = buffer.getChannelData(0);
 
+			// 噪声：更强烈一点（0.4 → 0.8）
 			for (let i = 0; i < data.length; i++) {
-				// 更细、更尖锐的颗粒噪声
-				data[i] =
-					(Math.random() * 2 - 1) *
-					(0.2 + Math.random() * 0.2) * // 轻微随机振幅
-					Math.pow(1 - i / data.length, 2); // 柔和衰减
+				data[i] = (Math.random() - 0.5) * 0.8;
 			}
 
 			const noise = ctx.createBufferSource();
 			noise.buffer = buffer;
 
-			// 高通过滤，让声音更“细”，更接近 Matrix 字符闪动
+			// 带通滤波（集中能量）
 			const filter = ctx.createBiquadFilter();
-			filter.type = "highpass";
-			filter.frequency.value = 1200; // 去掉低频闷声
-			filter.Q.value = 1.2;
+			filter.type = "bandpass";
+			filter.frequency.value = 3500; // 更亮
+			filter.Q.value = 10; // 能量更集中，更尖锐
 
+			// 声音更大但不失真：提升到 0.45，然后快速衰减
 			const gain = ctx.createGain();
-			gain.gain.value = 0.3;
+			gain.gain.setValueAtTime(0.45, ctx.currentTime);
+			gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03);
 
 			noise.connect(filter).connect(gain).connect(ctx.destination);
 			noise.start();
 		},
+
 		generateCharset() {
 			let chars = "";
 
@@ -73,6 +75,7 @@ Vue.createApp({
 			if (this.timer) clearInterval(this.timer);
 			const chars = this.generateCharset();
 			this.result = "";
+			this.done = false;
 			let index = 0;
 
 			this.timer = setInterval(() => {
@@ -81,9 +84,12 @@ Vue.createApp({
 				if (++index >= this.length) {
 					clearInterval(this.timer);
 					this.timer = null;
+					setTimeout(() => {
+						this.done = true;
+					}, 300);
 					console.log(`Password: %c${this.result}`, "color:lime");
 				}
-			}, 80);
+			}, 50);
 		},
 		copy() {
 			navigator.clipboard.writeText(this.result);
@@ -91,7 +97,7 @@ Vue.createApp({
 	},
 	computed: {
 		strength() {
-			let score = Math.min(32, this.length);
+			let score = Math.min(32, this.length/2);
 
 			if (this.Lower) score += 26;
 			if (this.Upper) score += 26;
