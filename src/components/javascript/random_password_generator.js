@@ -93,11 +93,12 @@ Vue.createApp({
 		},
 		copy() {
 			navigator.clipboard.writeText(this.result);
+			if (this.done && this.result) alert(`You copied the password: \n ${this.result}`);
 		},
 	},
 	computed: {
 		strength() {
-			let score = Math.min(32, this.length/2);
+			let score = Math.min(32, this.length / 2);
 
 			if (this.Lower) score += 26;
 			if (this.Upper) score += 26;
