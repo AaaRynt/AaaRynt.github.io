@@ -1,136 +1,136 @@
 :root {
-    --time: 0.3s;
-    --length: 100px;
-    --bgc: rgb(40, 44, 52);
-    --fontc: rgb(171, 178, 191);
+	--time: 0.3s;
+	--length: 100px;
+	--bgc: rgb(40, 44, 52);
+	--fontc: rgb(171, 178, 191);
 }
 * {
-    user-select: none;
-    font-family: "Aldrich", sans-serif;
+	user-select: none;
+	font-family: "Aldrich", sans-serif;
 }
 body {
-    overflow: hidden;
-    height: 100vh;
-    margin: 0px;
-    background: var(--bgc);
-    color: var(--fontc);
+	overflow: hidden;
+	height: 100vh;
+	margin: 0px;
+	background: var(--bgc);
+	color: var(--fontc);
 }
 .rect {
-    box-shadow: 4px 4px 5px 2px rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: var(--length);
-    height: var(--length);
-    cursor: n-resize;
-    border-radius: 10%;
-    font-weight: 900;
+	box-shadow: 4px 4px 5px 2px rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: var(--length);
+	height: var(--length);
+	cursor: n-resize;
+	border-radius: 10%;
+	font-weight: 900;
 }
 .left {
-    background-color: gold;
-    color: deepskyblue;
+	background-color: gold;
+	color: deepskyblue;
 }
 .right {
-    transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
-    background-color: deepskyblue;
-    color: gold;
+	transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+	background-color: deepskyblue;
+	color: gold;
 }
 #time {
-    transform: scaleX(1.5);
-    background: repeating-linear-gradient(to bottom, rgba(0, 255, 0, 0.8) 0px, rgba(0, 255, 0, 0.8) 1px, rgba(0, 0, 0, 0.4) 2px, rgba(0, 0, 0, 0.4) 3px);
-    background-clip: text;
-    font-size: 40px;
-    font-family: "Share Tech", sans-serif;
-    font-weight: 900;
-    color: transparent;
-    text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+	transform: scaleX(1.5);
+	background: repeating-linear-gradient(to bottom, rgba(0, 255, 0, 0.8) 0px, rgba(0, 255, 0, 0.8) 1px, rgba(0, 0, 0, 0.4) 2px, rgba(0, 0, 0, 0.4) 3px);
+	background-clip: text;
+	font-size: 40px;
+	font-family: "Share Tech", sans-serif;
+	font-weight: 900;
+	color: transparent;
+	text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
 }
 #control {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 8%;
-    left: 50%;
-    transform: translate(-50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 8%;
+	left: 50%;
+	transform: translate(-50%);
 }
 #control * {
-    position: relative;
-    margin: 8px;
+	position: relative;
+	margin: 8px;
 }
 input {
-    all: unset;
-    outline: 1px white ridge;
-    width: 130px;
-    margin-right: 5px;
-    background-color: rgb(40, 44, 52);
+	all: unset;
+	outline: 1px white ridge;
+	width: 130px;
+	margin-right: 5px;
+	background-color: rgb(40, 44, 52);
 }
 span::after {
-    content: "(sec)";
-    position: absolute;
-    opacity: 0.4;
-    transform: translate(-62px, 8px);
+	content: "(sec)";
+	position: absolute;
+	opacity: 0.4;
+	transform: translate(-62px, 8px);
 }
 button {
-    all: unset;
-    padding: 4px;
-    padding-right: 20px;
-    padding-left: 20px;
-    transition: 150ms;
-    background-color: gold;
-    border-radius: 8px;
-    color: deepskyblue;
-    text-align: center;
+	all: unset;
+	padding: 4px;
+	padding-right: 20px;
+	padding-left: 20px;
+	transition: 150ms;
+	background-color: gold;
+	border-radius: 8px;
+	color: deepskyblue;
+	text-align: center;
 }
 button:hover {
-    box-shadow: 0 2px 5px skyblue;
-    transform: scale(1.1);
-    background-color: deepskyblue;
-    cursor: pointer;
-    color: gold;
+	box-shadow: 0 2px 5px skyblue;
+	transform: scale(1.1);
+	background-color: deepskyblue;
+	cursor: pointer;
+	color: gold;
 }
 button:active {
-    box-shadow: rgba(0, 0, 0, 0.2) 4px 2px 4px inset, rgba(255, 255, 255, 0.2) -4px -2px 2px inset;
-    filter: brightness(0.9);
-    transform: scale(0.9);
-    background: var(--bcg);
-    cursor: not-allowed;
-    color: var(--fontc);
+	box-shadow: rgba(0, 0, 0, 0.2) 4px 2px 4px inset, rgba(255, 255, 255, 0.2) -4px -2px 2px inset;
+	filter: brightness(0.9);
+	transform: scale(0.9);
+	background: var(--bcg);
+	cursor: not-allowed;
+	color: var(--fontc);
 }
 button.disable {
-    box-shadow: rgba(0, 0, 0, 0.2) 4px 2px 4px inset, rgba(255, 255, 255, 0.2) -4px -2px 2px inset;
-    filter: brightness(0.9);
-    transform: scale(0.9);
-    background: var(--bcg);
-    cursor: not-allowed;
-    color: var(--fontc);
+	box-shadow: rgba(0, 0, 0, 0.2) 4px 2px 4px inset, rgba(255, 255, 255, 0.2) -4px -2px 2px inset;
+	filter: brightness(0.9);
+	transform: scale(0.9);
+	background: var(--bcg);
+	cursor: not-allowed;
+	color: var(--fontc);
 }
 footer {
-    position: absolute;
-    bottom: 1%;
-    left: 50%;
-    transform: translate(-50%);
+	position: absolute;
+	bottom: 1%;
+	left: 50%;
+	transform: translate(-50%);
 }
 a {
-    user-select: all;
-    margin-right: 10px;
-    margin-left: 10px;
-    transition: 0.2s;
-    cursor: help;
-    color: rgb(77, 182, 176);
-    text-decoration: none;
-    text-shadow: 0 0 3px rgba(34, 200, 247, 0.8);
+	user-select: all;
+	margin-right: 10px;
+	margin-left: 10px;
+	transition: 0.2s;
+	cursor: help;
+	color: rgb(77, 182, 176);
+	text-decoration: none;
+	text-shadow: 0 0 3px rgba(34, 200, 247, 0.8);
 }
 a:hover {
-    text-decoration: underline;
-    text-shadow: 0 0 10px rgba(34, 200, 247, 0.8), 0 0 3px rgba(34, 200, 247, 0.8);
+	text-decoration: underline;
+	text-shadow: 0 0 10px rgba(34, 200, 247, 0.8), 0 0 3px rgba(34, 200, 247, 0.8);
 }
 hr {
-    position: relative;
-    top: 560px;
-    height: 2px;
-    background: linear-gradient(90deg, gold, deepskyblue);
-    border: none;
+	position: relative;
+	top: 560px;
+	height: 2px;
+	background: linear-gradient(90deg, gold, deepskyblue);
+	border: none;
 }

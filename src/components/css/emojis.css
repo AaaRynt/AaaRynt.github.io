@@ -1,12 +1,12 @@
 body {
-    overflow: hidden;
-    height: 100vh;
-    margin: 0;
-    background: rgb(40, 44, 52);
-    color: rgb(171, 178, 191);
+	overflow: hidden;
+	height: 100vh;
+	margin: 0;
+	background: rgb(40, 44, 52);
+	color: rgb(171, 178, 191);
 }
 .emoji {
-    position: absolute;
-    cursor: help;
-    font-size: 100px;
+	position: absolute;
+	cursor: help;
+	font-size: 100px;
 }

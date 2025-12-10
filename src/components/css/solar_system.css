@@ -1,84 +1,84 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    height: 100vh;
-    margin: 0px;
-    background-image: linear-gradient(to right top, rgb(20, 10, 10), rgb(20, 20, 0), rgb(5, 5, 30));
-    cursor: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	height: 100vh;
+	margin: 0px;
+	background-image: linear-gradient(to right top, rgb(20, 10, 10), rgb(20, 20, 0), rgb(5, 5, 30));
+	cursor: none;
 }
 .star {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-image: radial-gradient(white 0px, transparent 3px), radial-gradient(white 1px, transparent 0px);
-    background-position: 0 0, 150px 150px;
-    background-size: 300px 300px;
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-image: radial-gradient(white 0px, transparent 3px), radial-gradient(white 1px, transparent 0px);
+	background-position: 0 0, 150px 150px;
+	background-size: 300px 300px;
 }
 .sun {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    animation: sun 4s infinite linear alternate;
-    background-color: gold;
-    border-radius: 50%;
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	animation: sun 4s infinite linear alternate;
+	background-color: gold;
+	border-radius: 50%;
 }
 @keyframes sun {
 	from {
 		box-shadow: 0 0 20px 6px gold;
 	}
-to {
-     box-shadow: 0 0 15px 4px red;
-     filter: brightness(0.9);
+	to {
+		box-shadow: 0 0 15px 4px red;
+		filter: brightness(0.9);
 	}
 }
 .earth-orbit {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    animation: rotate 40s infinite linear;
-    border-radius: 50%;
+	position: absolute;
+	width: 600px;
+	height: 600px;
+	animation: rotate 40s infinite linear;
+	border-radius: 50%;
 }
 .moon-orbit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 260px;
-    left: 560px;
-    width: 80px;
-    height: 80px;
-    animation: rotate 2s infinite linear;
-    border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 260px;
+	left: 560px;
+	width: 80px;
+	height: 80px;
+	animation: rotate 2s infinite linear;
+	border-radius: 50%;
 }
 .earth {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-image: linear-gradient(deepskyblue, forestgreen);
-    border-radius: 50%;
-    font-size: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	background-image: linear-gradient(deepskyblue, forestgreen);
+	border-radius: 50%;
+	font-size: 40px;
 }
 .moon {
-    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.3);
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translate(-50%, -50%);
-    width: 15px;
-    height: 15px;
-    background: radial-gradient(circle at 30% 30%, lightgray, gray);
-    background-color: lightgray;
-    border-radius: 50%;
+	box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.3);
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	transform: translate(-50%, -50%);
+	width: 15px;
+	height: 15px;
+	background: radial-gradient(circle at 30% 30%, lightgray, gray);
+	background-color: lightgray;
+	border-radius: 50%;
 }
 @keyframes rotate {
 	from {
 		transform: rotate(0deg);
 	}
-to {
-     transform: rotate(360deg);
+	to {
+		transform: rotate(360deg);
 	}
 }
