@@ -16,6 +16,9 @@ body {
 	border-radius: 10px;
 	font-size: 20px;
 }
+#time::after{
+	content: " s";
+}
 #container {
 	display: grid;
 	gap: 10px;

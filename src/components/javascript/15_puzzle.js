@@ -21,7 +21,7 @@ let tiles = [],
 
 setInterval(() => {
 	if (is_move) time++;
-	dom_time.textContent = `TIME: ${time}s`;
+	dom_time.textContent = `TIME: ${time}`;
 }, 1000);
 for (let i = 0; i < 15; i++) {
 	const div = document.createElement("div");
@@ -58,7 +58,7 @@ function generate() {
 	time = 0;
 	is_move = false;
 	num.length = 0;
-	dom_time.textContent = "TIME: 0s";
+	dom_time.textContent = "TIME: 0";
 	dom_step.textContent = "STEP: 0";
 	for (let i = 1; i <= 15; i++) num.push(i);
 	num.push(0);
