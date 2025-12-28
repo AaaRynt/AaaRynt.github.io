@@ -9,9 +9,9 @@ gtag("config", "G-DBVDLF0RZ6");
 const text = "Time passes,code remains.Each commit is a stroke on the canvas of my youth.Stay sober while striving for better answers.",
 	introduce = document.querySelector("#introduce"),
 	over = document.querySelector("#over"),
-	click = document.querySelector("#click"),
-	audio1 = document.querySelector("#audio1"),
-	audio2 = document.querySelector("#audio2");
+	click = document.querySelector("#click");
+// const music1 = document.querySelector("#music1"),
+// 	music2 = document.querySelector("#music2");
 let index = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,16 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	}, 80);
 });
-document.addEventListener("click", () => {
-	audio1.play();
-});
-audio1.addEventListener("ended", () => {
-	audio2.play();
-});
-audio2.addEventListener("ended", () => {
-	audio1.play();
-});
-document.querySelectorAll(".link").forEach(i => {
+// document.addEventListener("click", () => {
+// 	music1.play();
+// });
+// music1.addEventListener("ended", () => {
+// 	music2.play();
+// });
+// music2.addEventListener("ended", () => {
+// 	music1.play();
+// });
+document.querySelectorAll(".link").forEach((i) => {
 	i.addEventListener("click", () => {
 		const aTag = i.querySelector("a");
 		if (aTag) {
